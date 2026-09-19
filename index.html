@@ -2185,52 +2185,141 @@
         return;
       }
 
-      const savedResult = {
-        savedAt: new Date().toISOString(),
-        answers: { ...answers },
-        result: {
-          title: resultData.title,
-          intro: resultData.intro,
-          ahaTitle: resultData.ahaTitle,
-          ahaText: resultData.ahaText,
-          foundation: resultData.foundation,
-          gap: resultData.gap,
-          why: resultData.why,
-          skills: [...resultData.skills],
-          steps: [...resultData.steps],
-          primaryGap: resultData.primaryGap,
-          recommendedPath: resultData.recommendedPath
-        }
-      };
-
       try {
+
+        /*
+          Save the complete Skill Co-Pilot result.
+          This includes:
+          - All 4 assessment answers
+          - AI Co-Pilot result title
+          - Introduction
+          - AHA title and explanation
+          - Foundation
+          - Skill gap
+          - Why it matters
+          - Recommended skills
+          - 30-day path
+          - Primary gap
+          - Recommended learning path
+        */
+
+        const savedResult = {
+          savedAt: new Date().toISOString(),
+
+          answers: {
+            direction: answers.direction,
+            experience: answers.experience,
+            confidence: answers.confidence,
+            barrier: answers.barrier
+          },
+
+          copilotAnswers: {
+            resultTitle: resultData.title,
+            resultIntro: resultData.intro,
+            ahaTitle: resultData.ahaTitle,
+            ahaText: resultData.ahaText,
+            foundation: resultData.foundation,
+            gap: resultData.gap,
+            why: resultData.why,
+            skills: Array.isArray(resultData.skills)
+              ? [...resultData.skills]
+              : [],
+            steps: Array.isArray(resultData.steps)
+              ? [...resultData.steps]
+              : [],
+            primaryGap: resultData.primaryGap,
+            recommendedPath: resultData.recommendedPath
+          },
+
+          /*
+            Keep the original result structure as well,
+            so previously expected saved-result data remains compatible.
+          */
+          result: {
+            title: resultData.title,
+            intro: resultData.intro,
+            ahaTitle: resultData.ahaTitle,
+            ahaText: resultData.ahaText,
+            foundation: resultData.foundation,
+            gap: resultData.gap,
+            why: resultData.why,
+            skills: Array.isArray(resultData.skills)
+              ? [...resultData.skills]
+              : [],
+            steps: Array.isArray(resultData.steps)
+              ? [...resultData.steps]
+              : [],
+            primaryGap: resultData.primaryGap,
+            recommendedPath: resultData.recommendedPath
+          }
+        };
+
+        const serializedResult = JSON.stringify(savedResult);
 
         localStorage.setItem(
           "your_next_skill_saved_result",
-          JSON.stringify(savedResult)
+          serializedResult
         );
 
-        document.getElementById("copyConfirmation").textContent =
-          "Your Skill Co-Pilot result has been saved on this device! 🌱";
+        /*
+          Verify that the browser actually stored the
+          complete Skill Co-Pilot result.
+        */
+        const savedCheck = localStorage.getItem(
+          "your_next_skill_saved_result"
+        );
 
-        showToast("Your Skill Co-Pilot result has been saved! 🌱");
+        if (!savedCheck) {
+          throw new Error("Saved result could not be verified.");
+        }
+
+        const verifiedResult = JSON.parse(savedCheck);
+
+        if (
+          !verifiedResult.copilotAnswers ||
+          !verifiedResult.copilotAnswers.ahaTitle ||
+          !verifiedResult.copilotAnswers.ahaText ||
+          !verifiedResult.copilotAnswers.foundation ||
+          !verifiedResult.copilotAnswers.gap ||
+          !verifiedResult.copilotAnswers.why ||
+          !Array.isArray(verifiedResult.copilotAnswers.skills) ||
+          !Array.isArray(verifiedResult.copilotAnswers.steps)
+        ) {
+          throw new Error("Complete Skill Co-Pilot result was not saved.");
+        }
+
+        document.getElementById("copyConfirmation").textContent =
+          "Your complete Skill Co-Pilot result has been saved on this device! 🌱";
+
+        showToast(
+          "Your complete Skill Co-Pilot result has been saved! 🌱"
+        );
 
         trackEvent("save_results_clicked", {
           save_method: "local_storage",
           target_direction: answers.direction,
-          primary_gap: resultData.primaryGap
+          primary_gap: resultData.primaryGap,
+          copilot_result_saved: true
         });
 
       } catch (error) {
 
-        document.getElementById("copyConfirmation").textContent =
-          "We couldn't save the result on this device.";
+        console.error(
+          "Your Next Skill save error:",
+          error
+        );
 
-        showToast("Unable to save on this device. Please try again.");
+        document.getElementById("copyConfirmation").textContent =
+          "We couldn't save the complete result on this device.";
+
+        showToast(
+          "Unable to save on this device. Please try again."
+        );
 
         trackEvent("save_results_error", {
           target_direction: answers.direction,
-          primary_gap: resultData.primaryGap
+          primary_gap: resultData ? resultData.primaryGap : "unknown",
+          error_type: "local_storage_save_error"
         });
       }
     }
