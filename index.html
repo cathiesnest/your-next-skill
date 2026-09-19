@@ -598,6 +598,18 @@
       max-width: 600px;
     }
 
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .share-buttons .btn {
+      min-width: 190px;
+    }
+
     .copy-confirmation {
       margin-top: 13px;
       color: var(--sage-dark);
@@ -987,8 +999,13 @@
         font-size: 14px;
       }
 
-      .share-box .btn {
+      .share-buttons {
+        flex-direction: column;
+      }
+
+      .share-buttons .btn {
         width: 100%;
+        min-width: 0;
       }
 
       .section-heading h3 {
@@ -1160,12 +1177,12 @@
 
       <a
         class="top-link"
-        href="https://cathiesnest.github.io/tabing-guhit-3.0/"
+        href="https://cathiesnest.github.io/tabing-guhit-hub/"
         target="_blank"
         rel="noopener noreferrer"
         onclick="trackEvent('tabing_guhit_header_click')"
       >
-        Visit Tabing Guhit →
+        Visit Tabing Guhit Hub →
       </a>
     </div>
   </header>
@@ -1324,13 +1341,27 @@
             who may find it useful.
           </p>
 
-          <button
-            class="btn btn-sage"
-            type="button"
-            onclick="saveAndShare()"
-          >
-            🔗 Copy My Results Link
-          </button>
+          <div class="share-buttons">
+
+            <button
+              class="btn btn-sage"
+              type="button"
+              onclick="saveAndShare()"
+            >
+              💾 Save My Results
+            </button>
+
+            <a
+              class="btn btn-primary"
+              href="https://cathiesnest.github.io/your-next-skill/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackEvent('your_next_skill_share_click')"
+            >
+              🔗 Save and Share
+            </a>
+
+          </div>
 
           <div id="copyConfirmation" class="copy-confirmation"></div>
 
@@ -1446,7 +1477,7 @@
             </a>
 
             <a
-              href="https://www.pinterest.com/cathiesnest/"
+              href="https://ph.pinterest.com/CathiesnestDigitalHub/"
               target="_blank"
               rel="noopener noreferrer"
               onclick="trackEvent('pinterest_click')"
