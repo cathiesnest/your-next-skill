@@ -1161,7 +1161,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      
+      <a
         class="brand"
         href="https://cathiesnest.github.io/tabing-guhit-3.0/"
         target="_blank"
@@ -1174,7 +1174,7 @@
         </span>
       </a>
 
-      
+      <a
         class="top-link"
         href="https://cathiesnest.github.io/tabing-guhit-hub/"
         target="_blank"
@@ -1377,7 +1377,7 @@
 
           <div class="learning-grid">
 
-            
+            <a
               class="learning-card"
               href="https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
               target="_blank"
@@ -1391,7 +1391,7 @@
               </span>
             </a>
 
-            
+            <a
               class="learning-card"
               href="https://alison.com/certificate-courses?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
               target="_blank"
@@ -1405,7 +1405,7 @@
               </span>
             </a>
 
-            
+            <a
               class="learning-card"
               href="https://alison.com/courses/business?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
               target="_blank"
@@ -1419,7 +1419,7 @@
               </span>
             </a>
 
-            
+            <a
               class="learning-card"
               href="https://alison.com/courses/management?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
               target="_blank"
@@ -1433,7 +1433,7 @@
               </span>
             </a>
 
-            
+            <a
               class="learning-card"
               href="https://alison.com/courses/personal-development?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
               target="_blank"
@@ -1463,7 +1463,7 @@
 
           <div class="social-links">
 
-            
+            <a
               href="https://cathiesnest.github.io/tabing-guhit-3.0/"
               target="_blank"
               rel="noopener noreferrer"
@@ -1472,7 +1472,7 @@
               🌿 Tabing Guhit 3.0
             </a>
 
-            
+            <a
               href="https://ph.pinterest.com/CathiesnestDigitalHub/"
               target="_blank"
               rel="noopener noreferrer"
@@ -1481,7 +1481,7 @@
               📌 Follow on Pinterest
             </a>
 
-            
+            <a
               href="https://www.facebook.com/profile.php?id=61580857530656"
               target="_blank"
               rel="noopener noreferrer"
@@ -2236,60 +2236,6 @@
     }
 
     /* =========================================================
-       LOAD SAVED RESULTS
-       Restores a previously saved Skill Co-Pilot answer set
-       on return visits (does not run if a shared link was opened).
-       ========================================================= */
-
-    function loadSavedResult() {
-
-      let saved;
-
-      try {
-
-        const raw = localStorage.getItem("your_next_skill_saved_result");
-
-        if (!raw) {
-          return false;
-        }
-
-        saved = JSON.parse(raw);
-
-      } catch (error) {
-        return false;
-      }
-
-      if (
-        !saved ||
-        !saved.answers ||
-        !saved.answers.direction ||
-        !saved.answers.experience ||
-        !saved.answers.confidence ||
-        !saved.answers.barrier
-      ) {
-        return false;
-      }
-
-      answers = { ...saved.answers };
-
-      generateResult();
-
-      document.getElementById("copyConfirmation").textContent =
-        "Showing your saved Skill Co-Pilot result. 🌱";
-
-      showToast("Welcome back! We restored your saved result. 🌿");
-
-      trackEvent("saved_result_restored", {
-        target_direction: answers.direction,
-        experience_type: answers.experience,
-        confidence_level: answers.confidence,
-        barrier: answers.barrier
-      });
-
-      return true;
-    }
-
-    /* =========================================================
        SHARE TOOL LINK
        ========================================================= */
 
@@ -2433,11 +2379,7 @@
 
     trackEvent("skill_check_started");
 
-    const sharedResultLoaded = loadSharedResult();
-
-    if (!sharedResultLoaded) {
-      loadSavedResult();
-    }
+    loadSharedResult();
 
   </script>
 
