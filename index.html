@@ -1170,7 +1170,7 @@
       >
         <span class="brand-mark">🌿</span>
         <span>
-          ☕ Find Your Niche by Tabing Guhit Powered by CathiesNest Digital
+          Find Your Niche
         </span>
       </a>
 
@@ -1335,9 +1335,8 @@
           <h3>🔗 Save & Share My Results</h3>
 
           <p>
-            Your answers are turned into a shareable link.
-            Copy it, save it somewhere safe, or send it to someone
-            who may find it useful.
+            Save your Skill Co-Pilot result in your browser,
+            or copy the Your Next Skill link to share the tool.
           </p>
 
           <div class="share-buttons">
@@ -1345,7 +1344,7 @@
             <button
               class="btn btn-sage"
               type="button"
-              onclick="saveAndShare()"
+              onclick="saveMyResults()"
             >
               💾 Save My Results
             </button>
@@ -1353,7 +1352,7 @@
             <button
               class="btn btn-primary"
               type="button"
-              onclick="saveAndShare(); trackEvent('your_next_skill_share_click')"
+              onclick="shareToolLink()"
             >
               🔗 Save and Share
             </button>
@@ -2176,92 +2175,97 @@
     }
 
     /* =========================================================
-       SAVE & SHARE
+       SAVE MY RESULTS
        ========================================================= */
 
-    function encodeAnswers(data) {
-      const json = JSON.stringify(data);
+    function saveMyResults() {
 
-      const bytes = new TextEncoder().encode(json);
+      if (!resultData) {
+        showToast("Your Skill Co-Pilot result isn't ready yet. 🌿");
+        return;
+      }
 
-      let binary = "";
-
-      bytes.forEach(byte => {
-        binary += String.fromCharCode(byte);
-      });
-
-      return btoa(binary)
-        .replace(/\+/g, "-")
-        .replace(/\//g, "_")
-        .replace(/=+$/, "");
-    }
-
-    function decodeAnswers(encoded) {
-      try {
-        let base64 = encoded
-          .replace(/-/g, "+")
-          .replace(/_/g, "/");
-
-        while (base64.length % 4) {
-          base64 += "=";
+      const savedResult = {
+        savedAt: new Date().toISOString(),
+        answers: { ...answers },
+        result: {
+          title: resultData.title,
+          intro: resultData.intro,
+          ahaTitle: resultData.ahaTitle,
+          ahaText: resultData.ahaText,
+          foundation: resultData.foundation,
+          gap: resultData.gap,
+          why: resultData.why,
+          skills: [...resultData.skills],
+          steps: [...resultData.steps],
+          primaryGap: resultData.primaryGap,
+          recommendedPath: resultData.recommendedPath
         }
+      };
 
-        const binary = atob(base64);
+      try {
 
-        const bytes = Uint8Array.from(
-          binary,
-          character => character.charCodeAt(0)
+        localStorage.setItem(
+          "your_next_skill_saved_result",
+          JSON.stringify(savedResult)
         );
 
-        return JSON.parse(
-          new TextDecoder().decode(bytes)
-        );
+        document.getElementById("copyConfirmation").textContent =
+          "Your Skill Co-Pilot result has been saved on this device! 🌱";
+
+        showToast("Your Skill Co-Pilot result has been saved! 🌱");
+
+        trackEvent("save_results_clicked", {
+          save_method: "local_storage",
+          target_direction: answers.direction,
+          primary_gap: resultData.primaryGap
+        });
 
       } catch (error) {
-        return null;
+
+        document.getElementById("copyConfirmation").textContent =
+          "We couldn't save the result on this device.";
+
+        showToast("Unable to save on this device. Please try again.");
+
+        trackEvent("save_results_error", {
+          target_direction: answers.direction,
+          primary_gap: resultData.primaryGap
+        });
       }
     }
 
-    async function saveAndShare() {
+    /* =========================================================
+       SHARE TOOL LINK
+       ========================================================= */
 
-      const encoded = encodeAnswers(answers);
+    async function shareToolLink() {
 
       const shareUrl =
-        window.location.origin +
-        window.location.pathname +
-        "?result=" +
-        encodeURIComponent(encoded);
+        "https://cathiesnest.github.io/your-next-skill/";
 
       try {
 
         await navigator.clipboard.writeText(shareUrl);
 
         document.getElementById("copyConfirmation").textContent =
-          "Link copied successfully! 🎉";
+          "Your Next Skill link copied successfully! 🎉";
 
-        showToast("Link copied successfully! 🎉");
+        showToast("Your Next Skill link copied successfully! 🎉");
 
-        trackEvent("share_results_clicked", {
-          share_method: "copy_link",
-          target_direction: answers.direction,
-          primary_gap: resultData ? resultData.primaryGap : "unknown"
-        });
-
-        trackEvent("share_link_copied", {
-          target_direction: answers.direction,
-          primary_gap: resultData ? resultData.primaryGap : "unknown"
+        trackEvent("your_next_skill_share_click", {
+          share_method: "copy_tool_link"
         });
 
       } catch (error) {
 
         window.prompt(
-          "Copy your personalized results link:",
+          "Copy the Your Next Skill link:",
           shareUrl
         );
 
-        trackEvent("share_results_clicked", {
-          share_method: "manual_copy",
-          target_direction: answers.direction
+        trackEvent("your_next_skill_share_click", {
+          share_method: "manual_copy_tool_link"
         });
       }
     }
