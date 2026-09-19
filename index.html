@@ -363,4 +363,899 @@
       font-size: 15px;
       font-weight: 700;
       line-height: 1.4;
-      transition: 0.2s
+      transition: 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 49px;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--brown-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--brown-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--sand);
+    }
+
+    .btn-sage {
+      background: var(--sage);
+      color: var(--white);
+    }
+
+    .btn-sage:hover {
+      background: var(--sage-dark);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =========================================================
+       RESULTS
+       ========================================================= */
+
+    .results {
+      padding: clamp(30px, 5vw, 58px);
+    }
+
+    .result-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
+    }
+
+    .result-header h2 {
+      font-size: clamp(38px, 6vw, 57px);
+      margin: 15px 0 15px;
+      letter-spacing: -0.025em;
+    }
+
+    .result-header p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       AHA
+       ========================================================= */
+
+    .aha-box {
+      background:
+        linear-gradient(135deg, rgba(158,170,145,0.17), rgba(232,223,208,0.45));
+      border: 1px solid rgba(101,112,92,0.18);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+
+    .aha-label {
+      color: var(--sage-dark);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+    }
+
+    .aha-box h3 {
+      font-size: clamp(28px, 5vw, 39px);
+      margin: 11px 0 14px;
+      line-height: 1.25;
+    }
+
+    .aha-box p {
+      margin: 0;
+      color: var(--brown-dark);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       RESULT CARDS
+       ========================================================= */
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .result-card {
+      background: rgba(255,255,255,0.68);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 25px;
+    }
+
+    .result-card h3 {
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px;
+      line-height: 1.45;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .result-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .skill-list {
+      margin: 10px 0 0;
+      padding-left: 21px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .skill-list li {
+      margin-bottom: 8px;
+    }
+
+    /* =========================================================
+       30-DAY PATH
+       ========================================================= */
+
+    .level-path {
+      margin: 34px 0;
+    }
+
+    .level-path h3 {
+      text-align: center;
+      font-size: 31px;
+      margin-bottom: 23px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 35px;
+      height: 35px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--sand);
+      color: var(--brown-dark);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: var(--brown-dark);
+      line-height: 1.4;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      display: block;
+    }
+
+    /* =========================================================
+       SHARE
+       ========================================================= */
+
+    .share-box {
+      text-align: center;
+      background: rgba(203,189,169,0.15);
+      border: 1px dashed var(--taupe);
+      border-radius: var(--radius-md);
+      padding: 27px;
+      margin: 32px 0;
+    }
+
+    .share-box h3 {
+      margin: 0 0 9px;
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    .share-box p {
+      margin: 0 auto 17px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .share-buttons .btn {
+      min-width: 190px;
+    }
+
+    .copy-confirmation {
+      margin-top: 13px;
+      color: var(--sage-dark);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 21px;
+    }
+
+    /* =========================================================
+       LEARNING
+       ========================================================= */
+
+    .learning-section {
+      margin-top: 38px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 25px;
+    }
+
+    .section-heading h3 {
+      font-size: 32px;
+      margin: 0 0 10px;
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .learning-card {
+      text-decoration: none;
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 23px;
+      transition: 0.2s ease;
+      min-height: 145px;
+    }
+
+    .learning-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(80,65,50,0.08);
+    }
+
+    .learning-icon {
+      font-size: 25px;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .learning-card strong {
+      display: block;
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .learning-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      display: block;
+    }
+
+    /* =========================================================
+       FOOTER JOURNEY
+       ========================================================= */
+
+    .footer-journey {
+      margin-top: 42px;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: var(--brown-dark);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .footer-journey h3 {
+      color: var(--white);
+      font-size: 31px;
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    .footer-journey p {
+      margin: 0 auto 23px;
+      max-width: 640px;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      padding: 11px 17px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .social-links a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* =========================================================
+       OTHER
+       ========================================================= */
+
+    .restart {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .privacy-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      margin: 24px auto 0;
+      max-width: 700px;
+    }
+
+    .site-footer {
+      padding: 18px 0 45px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 20px);
+      background: var(--brown-dark);
+      color: var(--white);
+      padding: 13px 19px;
+      border-radius: 999px;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      z-index: 1000;
+      text-align: center;
+      max-width: calc(100% - 30px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @media (max-width: 850px) {
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .result-grid {
+        gap: 15px;
+      }
+
+      .learning-grid {
+        gap: 13px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 720px) {
+
+      body {
+        font-size: 16px;
+      }
+
+      .container {
+        width: min(100% - 24px, 1080px);
+      }
+
+      .site-header {
+        padding: 19px 0;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+      }
+
+      .brand small {
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 43px 0 32px;
+      }
+
+      .hero .eyebrow {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 13vw, 60px);
+        margin-top: 19px;
+      }
+
+      .hero-subtitle {
+        font-size: 19px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .hero-note {
+        font-size: 14px;
+      }
+
+      .main-card {
+        margin-top: 22px;
+        margin-bottom: 45px;
+        border-radius: 23px;
+      }
+
+      .assessment,
+      .results {
+        padding: 27px 20px;
+      }
+
+      .progress-area {
+        margin-bottom: 32px;
+      }
+
+      .progress-label {
+        font-size: 13px;
+      }
+
+      .question-number {
+        font-size: 13px;
+      }
+
+      .question-title {
+        font-size: 30px;
+        line-height: 1.24;
+      }
+
+      .question-help {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      .option {
+        padding: 20px 18px;
+        min-height: 0;
+      }
+
+      .option strong {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .option span {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .navigation {
+        flex-direction: column-reverse;
+        margin-top: 27px;
+      }
+
+      .navigation .btn {
+        width: 100%;
+      }
+
+      .result-header {
+        margin-bottom: 32px;
+      }
+
+      .result-header h2 {
+        font-size: 37px;
+        line-height: 1.22;
+      }
+
+      .result-header p {
+        font-size: 16px;
+      }
+
+      .aha-box {
+        padding: 24px 21px;
+      }
+
+      .aha-box h3 {
+        font-size: 28px;
+      }
+
+      .aha-box p {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .result-grid,
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-card {
+        padding: 22px 20px;
+      }
+
+      .result-card h3 {
+        font-size: 17px;
+      }
+
+      .result-card p,
+      .skill-list {
+        font-size: 15px;
+      }
+
+      .level-path h3 {
+        font-size: 28px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step {
+        padding: 18px 12px;
+      }
+
+      .step strong {
+        font-size: 14px;
+      }
+
+      .step span {
+        font-size: 13px;
+      }
+
+      .share-box {
+        padding: 23px 18px;
+      }
+
+      .share-box h3 {
+        font-size: 23px;
+      }
+
+      .share-box p {
+        font-size: 14px;
+      }
+
+      .share-buttons {
+        flex-direction: column;
+      }
+
+      .share-buttons .btn {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .section-heading h3 {
+        font-size: 28px;
+      }
+
+      .section-heading p {
+        font-size: 14px;
+      }
+
+      .learning-card {
+        padding: 21px;
+        min-height: 0;
+      }
+
+      .learning-card strong {
+        font-size: 16px;
+      }
+
+      .learning-card span {
+        font-size: 14px;
+      }
+
+      .footer-journey {
+        padding: 27px 20px;
+      }
+
+      .footer-journey h3 {
+        font-size: 28px;
+      }
+
+      .footer-journey p {
+        font-size: 14px;
+      }
+
+      .social-links {
+        flex-direction: column;
+      }
+
+      .social-links a {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .privacy-note {
+        font-size: 12px;
+      }
+
+      .top-link {
+        display: none;
+      }
+    }
+
+    /* =========================================================
+       SMALL PHONES
+       ========================================================= */
+
+    @media (max-width: 430px) {
+
+      .container {
+        width: min(100% - 18px, 1080px);
+      }
+
+      .site-header {
+        padding: 16px 0;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .assessment,
+      .results {
+        padding: 23px 16px;
+      }
+
+      .main-card {
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .question-title {
+        font-size: 28px;
+      }
+
+      .question-help {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .option {
+        padding: 19px 16px;
+      }
+
+      .option strong {
+        font-size: 16.5px;
+        line-height: 1.45;
+      }
+
+      .option span {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .result-header h2 {
+        font-size: 34px;
+      }
+
+      .aha-box {
+        padding: 21px 18px;
+      }
+
+      .aha-box h3 {
+        font-size: 26px;
+      }
+
+      .aha-box p {
+        font-size: 15px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .step {
+        padding: 16px 10px;
+      }
+
+      .step span {
+        font-size: 12px;
+      }
+
+      .footer-journey h3 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      
+        class="brand"
+        href="https://cathiesnest.github.io/tabing-guhit-3.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackEvent('tabing_guhit_header_click')"
+      >
+        <span class="brand-mark">🌿</span>
+        <span>
+          Find Your Niche
+        </span>
+      </a>
+
+      
+        class="top-link"
+        href="https://cathiesnest.github.io/tabing-guhit-hub/"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackEvent('tabing_guhit_header_click')"
+      >
+        Visit Tabing Guhit Hub →
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="eyebrow">🌱 A gentle skill check</span>
+
+      <h1>Your Next Skill</h1>
+
+      <p class="hero-subtitle">
+        4 questions. One clearer next step.
+      </p>
+
+      <p class="hero-copy">
+        You already have experience, skills, and strengths.
+        The question isn't whether you're good enough.
+        It's what you may need to build next.
+      </p>
+
+      <p class="hero-note">
+        Take a few minutes to reflect. Your answers will help your
+        Skill Co-Pilot identify a practical direction for your next level.
+      </p>
+    </section>
+
+    <!-- MAIN APP -->
+    <section class="main-card">
+
+      <!-- ASSESSMENT -->
+      <div id="assessment" class="assessment">
+
+        <div class="progress-area">
+          <div class="progress-label">
+            <span id="progressText">Question 1 of 4</span>
+            <span id="progressPercent">25%</span>
+          </div>
+
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <div class="navigation">
+          <button
+            id="backButton"
+            class="btn btn-secondary"
+            type="button"
+            onclick="previousQuestion()"
+            disabled
+          >
+            ← Back
+          </button>
+
+          <button
+            id="nextButton"
+            class="btn btn-primary"
+            type="button"
+            onclick="nextQuestion()"
+          >
+            Continue →
+          </button>
+        </div>
+
+      </div>
+
+      <!-- RESULTS -->
+      <div id="results" class="results hidden">
+
+        <div class="result-header">
+          <span class="eyebrow">🤖 Your Skill AHA</span>
+
+          <h2 id="resultTitle">Your
