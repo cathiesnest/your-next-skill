@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Your Next Skill | Tabing Guhit</title>
 
   <meta
     name="description"
-    content="A gentle four-question skill reflection tool from Tabing Guhit to help you identify your next practical skill."
+    content="Your Next Skill is a gentle 4-question skill check that helps you discover what to build next in your career."
+  />
+
+  <meta name="theme-color" content="#eee8dc" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
   >
 
-  <!-- Google Analytics -->
+  <!-- =========================================================
+       GOOGLE ANALYTICS 4
+       Existing Tabing Guhit GA4 Measurement ID
+       ========================================================= -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEYH1EKBHW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,25 +33,31 @@
       dataLayer.push(arguments);
     }
 
-    gtag("js", new Date());
-    gtag("config", "G-NEYH1EKBHW");
+    gtag('js', new Date());
+    gtag('config', 'G-NEYH1EKBHW', {
+      page_title: 'Your Next Skill',
+      page_location: window.location.href
+    });
   </script>
 
   <style>
     :root {
-      --cream: #f7f3ea;
-      --ivory: #fffdf8;
-      --sand: #e9dfcf;
-      --taupe: #b9aa97;
-      --sage: #9aaa8c;
-      --sage-dark: #68785f;
-      --brown: #6f5c4b;
-      --brown-dark: #4d4035;
-      --text: #4d463f;
-      --muted: #81776d;
+      --cream: #f6f1e8;
+      --ivory: #fbf8f2;
+      --sand: #e8dfd0;
+      --taupe: #cbbda9;
+      --sage: #9eaa91;
+      --sage-dark: #65705c;
+      --brown: #756354;
+      --brown-dark: #4f443b;
+      --charcoal: #35332f;
+      --muted: #756f67;
       --white: #ffffff;
-      --shadow: 0 14px 40px rgba(94, 78, 61, 0.10);
-      --radius: 22px;
+      --border: rgba(117, 99, 84, 0.18);
+      --shadow: 0 18px 45px rgba(80, 65, 50, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
     }
 
     * {
@@ -52,18 +71,15 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at top left, rgba(154, 170, 140, 0.12), transparent 30%),
-        linear-gradient(180deg, var(--cream), #f3eee4 55%, #eee7dc);
-      color: var(--text);
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-      line-height: 1.6;
+        radial-gradient(circle at top left, rgba(158,170,145,0.13), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(203,189,169,0.18), transparent 30%),
+        var(--cream);
+      color: var(--charcoal);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.72;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -71,59 +87,72 @@
     }
 
     button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    input {
+      font: inherit;
     }
 
-    .page {
-      width: min(100%, 980px);
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 22px 18px 48px;
     }
 
     /* =========================================================
        HEADER
        ========================================================= */
 
-    header {
+    .site-header {
+      padding: 25px 0;
+    }
+
+    .header-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 8px 2px 28px;
+      align-items: center;
+      gap: 18px;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--brown-dark);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--brown-dark);
+      font-size: 16px;
     }
 
     .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 31px;
-      height: 31px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: rgba(154, 170, 140, 0.18);
-      font-size: 17px;
+      display: grid;
+      place-items: center;
+      background: var(--sage);
+      color: var(--white);
+      font-size: 20px;
+      flex-shrink: 0;
     }
 
-    .header-link {
-      color: var(--sage-dark);
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: -2px;
+      line-height: 1.35;
+    }
+
+    .top-link {
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .header-link:hover {
-      text-decoration: underline;
+      font-size: 14px;
+      color: var(--brown);
+      border-bottom: 1px solid var(--taupe);
+      padding-bottom: 3px;
+      font-weight: 600;
     }
 
     /* =========================================================
@@ -131,432 +160,628 @@
        ========================================================= */
 
     .hero {
+      padding: 65px 0 42px;
       text-align: center;
-      padding: 24px 10px 34px;
     }
 
     .eyebrow {
-      margin: 0 0 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: rgba(158,170,145,0.17);
       color: var(--sage-dark);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      line-height: 1.35;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", serif;
+      color: var(--brown-dark);
+      line-height: 1.18;
     }
 
     h1 {
-      margin: 0;
-      color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(38px, 7vw, 62px);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
+      font-size: clamp(48px, 8vw, 78px);
+      margin: 22px auto 16px;
+      letter-spacing: -0.035em;
     }
 
-    .hero p {
-      max-width: 620px;
-      margin: 16px auto 0;
+    .hero-subtitle {
+      font-size: clamp(19px, 2.6vw, 23px);
+      color: var(--brown);
+      margin: 0 auto 18px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin: 0 auto 28px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .hero-note {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--brown);
+      font-size: 15px;
+      font-style: italic;
+      line-height: 1.7;
     }
 
     /* =========================================================
-       CARDS
+       MAIN CARD
        ========================================================= */
 
-    .card {
-      background: rgba(255, 253, 248, 0.88);
-      border: 1px solid rgba(111, 92, 75, 0.08);
-      border-radius: var(--radius);
+    .main-card {
+      background: rgba(251,248,242,0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
+      overflow: hidden;
+      margin: 30px auto 60px;
+    }
+
+    .assessment {
+      padding: clamp(30px, 5vw, 58px);
     }
 
     /* =========================================================
-       ASSESSMENT
+       PROGRESS
        ========================================================= */
 
-    #assessment {
-      padding: 26px;
+    .progress-area {
+      margin-bottom: 38px;
     }
 
-    .progress-wrap {
-      margin-bottom: 24px;
-    }
-
-    .progress-top {
+    .progress-label {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 8px;
+      font-size: 14px;
       color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
+      margin-bottom: 11px;
+      font-weight: 600;
     }
 
     .progress-track {
-      width: 100%;
-      height: 7px;
-      overflow: hidden;
+      height: 9px;
+      background: var(--sand);
       border-radius: 999px;
-      background: #e8e0d4;
+      overflow: hidden;
     }
 
     .progress-bar {
       height: 100%;
       width: 25%;
-      border-radius: inherit;
       background: var(--sage);
-      transition: width 0.25s ease;
+      border-radius: inherit;
+      transition: width 0.35s ease;
     }
 
-    .question-label {
-      margin: 0 0 8px;
+    /* =========================================================
+       QUESTIONS
+       ========================================================= */
+
+    .question-number {
       color: var(--sage-dark);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      margin-bottom: 10px;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
     }
 
     .question-title {
-      margin: 0 0 8px;
-      color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(25px, 5vw, 34px);
+      font-size: clamp(31px, 5vw, 43px);
+      margin: 0 0 13px;
       line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
     .question-help {
-      margin: 0 0 22px;
       color: var(--muted);
-      font-size: 14px;
+      margin: 0 0 28px;
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 720px;
     }
 
     .options {
       display: grid;
-      gap: 11px;
+      gap: 14px;
     }
 
     .option {
       width: 100%;
-      border: 1px solid #ded4c7;
-      border-radius: 16px;
-      background: var(--ivory);
-      padding: 15px 16px;
-      color: var(--text);
       text-align: left;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 650;
-      cursor: pointer;
-      transition:
-        transform 0.16s ease,
-        border-color 0.16s ease,
-        background 0.16s ease,
-        box-shadow 0.16s ease;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.76);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      color: var(--charcoal);
+      transition: 0.2s ease;
+      position: relative;
+      min-height: 78px;
     }
 
-    .option:hover {
-      transform: translateY(-1px);
+    .option:hover,
+    .option:focus-visible {
       border-color: var(--sage);
-      background: #fbfaf4;
-      box-shadow: 0 7px 18px rgba(94, 78, 61, 0.07);
+      background: rgba(158,170,145,0.09);
+      transform: translateY(-1px);
+      outline: none;
     }
 
     .option.selected {
       border-color: var(--sage-dark);
-      background: #eef2e9;
-      box-shadow: 0 7px 18px rgba(104, 120, 95, 0.10);
+      background: rgba(158,170,145,0.14);
+      box-shadow: 0 0 0 3px rgba(158,170,145,0.10);
     }
 
-    .nav-buttons {
+    .option strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--brown-dark);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .option span {
+      display: block;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       NAVIGATION BUTTONS
+       ========================================================= */
+
+    .navigation {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 24px;
+      gap: 14px;
+      margin-top: 32px;
     }
 
     .btn {
       border: 0;
       border-radius: 999px;
-      padding: 12px 18px;
-      font: inherit;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      transition:
-        transform 0.16s ease,
-        opacity 0.16s ease,
-        box-shadow 0.16s ease;
+      padding: 14px 23px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+      transition: 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 49px;
     }
 
     .btn:hover {
       transform: translateY(-1px);
     }
 
-    .btn:disabled {
-      cursor: not-allowed;
-      opacity: 0.45;
-      transform: none;
-    }
-
     .btn-primary {
       background: var(--brown);
       color: var(--white);
-      box-shadow: 0 7px 18px rgba(111, 92, 75, 0.18);
+    }
+
+    .btn-primary:hover {
+      background: var(--brown-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--brown-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--sand);
     }
 
     .btn-sage {
-      background: var(--sage-dark);
+      background: var(--sage);
       color: var(--white);
-      box-shadow: 0 7px 18px rgba(104, 120, 95, 0.18);
     }
 
-    .btn-soft {
-      background: #eee8de;
-      color: var(--brown-dark);
+    .btn-sage:hover {
+      background: var(--sage-dark);
+    }
+
+    .hidden {
+      display: none !important;
     }
 
     /* =========================================================
        RESULTS
        ========================================================= */
 
-    #results {
-      display: none;
-      margin-top: 26px;
+    .results {
+      padding: clamp(30px, 5vw, 58px);
     }
 
     .result-header {
-      padding: 28px;
-      margin-bottom: 16px;
       text-align: center;
+      max-width: 760px;
+      margin: 0 auto 40px;
     }
 
-    .result-kicker {
-      margin: 0 0 8px;
+    .result-header h2 {
+      font-size: clamp(38px, 6vw, 57px);
+      margin: 15px 0 15px;
+      letter-spacing: -0.025em;
+    }
+
+    .result-header p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       AHA
+       ========================================================= */
+
+    .aha-box {
+      background:
+        linear-gradient(135deg, rgba(158,170,145,0.17), rgba(232,223,208,0.45));
+      border: 1px solid rgba(101,112,92,0.18);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+
+    .aha-label {
       color: var(--sage-dark);
-      font-size: 12px;
       font-weight: 800;
-      letter-spacing: 0.1em;
+      font-size: 13px;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
     }
 
-    .result-title {
+    .aha-box h3 {
+      font-size: clamp(28px, 5vw, 39px);
+      margin: 11px 0 14px;
+      line-height: 1.25;
+    }
+
+    .aha-box p {
       margin: 0;
       color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(30px, 6vw, 45px);
-      line-height: 1.1;
+      font-size: 17px;
+      line-height: 1.75;
     }
 
-    .result-intro {
-      max-width: 680px;
-      margin: 14px auto 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
+    /* =========================================================
+       RESULT CARDS
+       ========================================================= */
 
     .result-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
     }
 
     .result-card {
-      padding: 23px;
-    }
-
-    .result-card.full {
-      grid-column: 1 / -1;
+      background: rgba(255,255,255,0.68);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 25px;
     }
 
     .result-card h3 {
-      margin: 0 0 9px;
-      color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 23px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 17px;
+      line-height: 1.45;
+      margin: 0 0 10px;
+      font-weight: 700;
     }
 
     .result-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
       margin: 0;
+    }
+
+    .skill-list {
+      margin: 10px 0 0;
+      padding-left: 21px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.65;
     }
 
-    .aha {
-      border: 1px solid rgba(154, 170, 140, 0.38);
-      background: #f1f4ed;
-    }
-
-    .aha h3 {
-      color: var(--sage-dark);
-    }
-
-    .skill-list,
-    .step-list {
-      margin: 12px 0 0;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .skill-list li,
-    .step-list li {
+    .skill-list li {
       margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .path-box {
-      margin-top: 15px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: #f3eee6;
-      color: var(--brown-dark);
-      font-size: 14px;
-      font-weight: 750;
     }
 
     /* =========================================================
-       ACTIONS
+       30-DAY PATH
        ========================================================= */
 
-    .result-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
+    .level-path {
+      margin: 34px 0;
     }
 
-    .share-box {
-      margin-top: 16px;
-      padding: 23px;
+    .level-path h3 {
       text-align: center;
+      font-size: 31px;
+      margin-bottom: 23px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    .step-number {
+      width: 35px;
+      height: 35px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--sand);
+      color: var(--brown-dark);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: var(--brown-dark);
+      line-height: 1.4;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      display: block;
+    }
+
+    /* =========================================================
+       SHARE
+       ========================================================= */
+
+    .share-box {
+      text-align: center;
+      background: rgba(203,189,169,0.15);
+      border: 1px dashed var(--taupe);
+      border-radius: var(--radius-md);
+      padding: 27px;
+      margin: 32px 0;
     }
 
     .share-box h3 {
-      margin: 0 0 7px;
-      color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 24px;
+      margin: 0 0 9px;
+      font-size: 25px;
+      line-height: 1.35;
     }
 
     .share-box p {
-      max-width: 650px;
       margin: 0 auto 17px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 600px;
     }
 
-    #copyConfirmation {
-      margin-top: 14px;
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .share-buttons .btn {
+      min-width: 190px;
+    }
+
+    .copy-confirmation {
+      margin-top: 13px;
       color: var(--sage-dark);
-      font-size: 13px;
       font-weight: 700;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 21px;
     }
 
     /* =========================================================
-       ALISON
+       LEARNING
        ========================================================= */
 
-    .learning-box {
-      margin-top: 16px;
-      padding: 24px;
+    .learning-section {
+      margin-top: 38px;
+    }
+
+    .section-heading {
       text-align: center;
+      max-width: 680px;
+      margin: 0 auto 25px;
     }
 
-    .learning-box h3 {
-      margin: 0 0 8px;
-      color: var(--brown-dark);
-      font-family: Georgia, "Times New Roman", serif;
+    .section-heading h3 {
+      font-size: 32px;
+      margin: 0 0 10px;
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .learning-card {
+      text-decoration: none;
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 23px;
+      transition: 0.2s ease;
+      min-height: 145px;
+    }
+
+    .learning-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(80,65,50,0.08);
+    }
+
+    .learning-icon {
       font-size: 25px;
+      margin-bottom: 8px;
+      line-height: 1;
     }
 
-    .learning-box p {
-      max-width: 650px;
-      margin: 0 auto 16px;
+    .learning-card strong {
+      display: block;
+      color: var(--brown-dark);
+      margin-bottom: 5px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .learning-card span {
       color: var(--muted);
       font-size: 14px;
-    }
-
-    .learning-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 9px;
-    }
-
-    .learning-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: #eee8de;
-      color: var(--brown-dark);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .learning-link:hover {
-      background: #e4dccf;
+      line-height: 1.65;
+      display: block;
     }
 
     /* =========================================================
-       FOOTER
+       FOOTER JOURNEY
        ========================================================= */
 
-    footer {
-      padding: 30px 4px 0;
+    .footer-journey {
+      margin-top: 42px;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: var(--brown-dark);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .footer-journey h3 {
+      color: var(--white);
+      font-size: 31px;
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+
+    .footer-journey p {
+      margin: 0 auto 23px;
+      max-width: 640px;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      padding: 11px 17px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .social-links a:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* =========================================================
+       OTHER
+       ========================================================= */
+
+    .restart {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .privacy-note {
       text-align: center;
       color: var(--muted);
       font-size: 12px;
+      line-height: 1.65;
+      margin: 24px auto 0;
+      max-width: 700px;
     }
 
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 10px;
+    .site-footer {
+      padding: 18px 0 45px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
-
-    .footer-links a {
-      color: var(--sage-dark);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* =========================================================
-       TOAST
-       ========================================================= */
 
     .toast {
       position: fixed;
       left: 50%;
-      bottom: 22px;
-      z-index: 9999;
+      bottom: 24px;
       transform: translate(-50%, 20px);
-      width: min(calc(100% - 30px), 460px);
-      padding: 13px 16px;
-      border-radius: 14px;
       background: var(--brown-dark);
       color: var(--white);
-      text-align: center;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 12px 30px rgba(55, 44, 35, 0.22);
+      padding: 13px 19px;
+      border-radius: 999px;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       opacity: 0;
       pointer-events: none;
-      transition:
-        opacity 0.22s ease,
-        transform 0.22s ease;
+      transition: 0.25s ease;
+      z-index: 1000;
+      text-align: center;
+      max-width: calc(100% - 30px);
     }
 
     .toast.show {
@@ -565,64 +790,368 @@
     }
 
     /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @media (max-width: 850px) {
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .result-grid {
+        gap: 15px;
+      }
+
+      .learning-grid {
+        gap: 13px;
+      }
+    }
+
+    /* =========================================================
        MOBILE
        ========================================================= */
 
     @media (max-width: 720px) {
-      .page {
-        padding: 15px 13px 38px;
+
+      body {
+        font-size: 16px;
       }
 
-      header {
-        padding-bottom: 18px;
+      .container {
+        width: min(100% - 24px, 1080px);
       }
 
-      .header-link {
-        font-size: 12px;
+      .site-header {
+        padding: 19px 0;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+      }
+
+      .brand small {
+        font-size: 11px;
       }
 
       .hero {
-        padding: 20px 7px 25px;
+        padding: 43px 0 32px;
       }
 
-      .hero p {
+      .hero .eyebrow {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 13vw, 60px);
+        margin-top: 19px;
+      }
+
+      .hero-subtitle {
+        font-size: 19px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .hero-note {
         font-size: 14px;
       }
 
-      #assessment {
-        padding: 20px;
+      .main-card {
+        margin-top: 22px;
+        margin-bottom: 45px;
+        border-radius: 23px;
       }
 
-      .result-grid {
+      .assessment,
+      .results {
+        padding: 27px 20px;
+      }
+
+      .progress-area {
+        margin-bottom: 32px;
+      }
+
+      .progress-label {
+        font-size: 13px;
+      }
+
+      .question-number {
+        font-size: 13px;
+      }
+
+      .question-title {
+        font-size: 30px;
+        line-height: 1.24;
+      }
+
+      .question-help {
+        font-size: 17px;
+        line-height: 1.65;
+      }
+
+      .option {
+        padding: 20px 18px;
+        min-height: 0;
+      }
+
+      .option strong {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+
+      .option span {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .navigation {
+        flex-direction: column-reverse;
+        margin-top: 27px;
+      }
+
+      .navigation .btn {
+        width: 100%;
+      }
+
+      .result-header {
+        margin-bottom: 32px;
+      }
+
+      .result-header h2 {
+        font-size: 37px;
+        line-height: 1.22;
+      }
+
+      .result-header p {
+        font-size: 16px;
+      }
+
+      .aha-box {
+        padding: 24px 21px;
+      }
+
+      .aha-box h3 {
+        font-size: 28px;
+      }
+
+      .aha-box p {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .result-grid,
+      .learning-grid {
         grid-template-columns: 1fr;
       }
 
-      .result-card.full {
-        grid-column: auto;
+      .result-card {
+        padding: 22px 20px;
       }
 
-      .result-header,
-      .result-card,
-      .share-box,
-      .learning-box {
-        padding: 20px;
+      .result-card h3 {
+        font-size: 17px;
       }
 
-      .nav-buttons {
-        flex-direction: column-reverse;
-        align-items: stretch;
+      .result-card p,
+      .skill-list {
+        font-size: 15px;
       }
 
-      .nav-buttons .btn {
-        width: 100%;
+      .level-path h3 {
+        font-size: 28px;
       }
 
-      .result-actions {
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .step {
+        padding: 18px 12px;
+      }
+
+      .step strong {
+        font-size: 14px;
+      }
+
+      .step span {
+        font-size: 13px;
+      }
+
+      .share-box {
+        padding: 23px 18px;
+      }
+
+      .share-box h3 {
+        font-size: 23px;
+      }
+
+      .share-box p {
+        font-size: 14px;
+      }
+
+      .share-buttons {
         flex-direction: column;
       }
 
-      .result-actions .btn {
+      .share-buttons .btn {
         width: 100%;
+        min-width: 0;
+      }
+
+      .section-heading h3 {
+        font-size: 28px;
+      }
+
+      .section-heading p {
+        font-size: 14px;
+      }
+
+      .learning-card {
+        padding: 21px;
+        min-height: 0;
+      }
+
+      .learning-card strong {
+        font-size: 16px;
+      }
+
+      .learning-card span {
+        font-size: 14px;
+      }
+
+      .footer-journey {
+        padding: 27px 20px;
+      }
+
+      .footer-journey h3 {
+        font-size: 28px;
+      }
+
+      .footer-journey p {
+        font-size: 14px;
+      }
+
+      .social-links {
+        flex-direction: column;
+      }
+
+      .social-links a {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .privacy-note {
+        font-size: 12px;
+      }
+
+      .top-link {
+        display: none;
+      }
+    }
+
+    /* =========================================================
+       SMALL PHONES
+       ========================================================= */
+
+    @media (max-width: 430px) {
+
+      .container {
+        width: min(100% - 18px, 1080px);
+      }
+
+      .site-header {
+        padding: 16px 0;
+      }
+
+      .hero {
+        padding-top: 35px;
+      }
+
+      .assessment,
+      .results {
+        padding: 23px 16px;
+      }
+
+      .main-card {
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .question-title {
+        font-size: 28px;
+      }
+
+      .question-help {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .option {
+        padding: 19px 16px;
+      }
+
+      .option strong {
+        font-size: 16.5px;
+        line-height: 1.45;
+      }
+
+      .option span {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .result-header h2 {
+        font-size: 34px;
+      }
+
+      .aha-box {
+        padding: 21px 18px;
+      }
+
+      .aha-box h3 {
+        font-size: 26px;
+      }
+
+      .aha-box p {
+        font-size: 15px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .step {
+        padding: 16px 10px;
+      }
+
+      .step span {
+        font-size: 12px;
+      }
+
+      .footer-journey h3 {
+        font-size: 26px;
       }
     }
   </style>
@@ -630,14 +1159,8 @@
 
 <body>
 
-  <main class="page">
-
-    <!-- =======================================================
-         HEADER
-         ======================================================= -->
-
-    <header>
-
+  <header class="site-header">
+    <div class="container header-inner">
       <a
         class="brand"
         href="https://cathiesnest.github.io/tabing-guhit-3.0/"
@@ -652,590 +1175,1186 @@
       </a>
 
       <a
-        class="header-link"
+        class="top-link"
         href="https://cathiesnest.github.io/tabing-guhit-hub/"
         target="_blank"
         rel="noopener noreferrer"
-        onclick="trackEvent('hub_header_click')"
+        onclick="trackEvent('tabing_guhit_header_click')"
       >
         Visit Tabing Guhit Hub →
       </a>
+    </div>
+  </header>
 
-    </header>
+  <main class="container">
 
-
-    <!-- =======================================================
-         HERO
-         ======================================================= -->
-
+    <!-- HERO -->
     <section class="hero">
+      <span class="eyebrow">🌱 A gentle skill check</span>
 
-      <p class="eyebrow">
-        Gentle career reflection
-      </p>
+      <h1>Your Next Skill</h1>
 
-      <h1>
-        Your Next Skill
-      </h1>
-
-      <p>
+      <p class="hero-subtitle">
         4 questions. One clearer next step.
       </p>
 
-    </section>
-
-
-    <!-- =======================================================
-         ASSESSMENT
-         ======================================================= -->
-
-    <section
-      id="assessment"
-      class="card"
-    >
-
-      <div class="progress-wrap">
-
-        <div class="progress-top">
-
-          <span id="progressLabel">
-            Question 1 of 4
-          </span>
-
-          <span id="progressPercent">
-            25%
-          </span>
-
-        </div>
-
-        <div class="progress-track">
-
-          <div
-            id="progressBar"
-            class="progress-bar"
-          ></div>
-
-        </div>
-
-      </div>
-
-
-      <p
-        id="questionNumber"
-        class="question-label"
-      >
-        Question 1
+      <p class="hero-copy">
+        You already have experience, skills, and strengths.
+        The question isn't whether you're good enough.
+        It's what you may need to build next.
       </p>
 
-      <h2
-        id="questionTitle"
-        class="question-title"
-      ></h2>
-
-      <p
-        id="questionHelp"
-        class="question-help"
-      ></p>
-
-      <div
-        id="options"
-        class="options"
-      ></div>
-
-
-      <div class="nav-buttons">
-
-        <button
-          id="backButton"
-          class="btn btn-soft"
-          type="button"
-          onclick="previousQuestion()"
-        >
-          ← Back
-        </button>
-
-        <button
-          id="nextButton"
-          class="btn btn-primary"
-          type="button"
-          onclick="nextQuestion()"
-          disabled
-        >
-          Next →
-        </button>
-
-      </div>
-
+      <p class="hero-note">
+        Take a few minutes to reflect. Your answers will help your
+        Skill Co-Pilot identify a practical direction for your next level.
+      </p>
     </section>
 
+    <!-- MAIN APP -->
+    <section class="main-card">
 
-    <!-- =======================================================
-         RESULTS
-         ======================================================= -->
+      <!-- ASSESSMENT -->
+      <div id="assessment" class="assessment">
 
-    <section id="results">
+        <div class="progress-area">
+          <div class="progress-label">
+            <span id="progressText">Question 1 of 4</span>
+            <span id="progressPercent">25%</span>
+          </div>
 
-      <div class="card result-header">
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
 
-        <p class="result-kicker">
-          Your Skill Co-Pilot
-        </p>
+        <div id="questionArea"></div>
 
-        <h2
-          id="resultTitle"
-          class="result-title"
-        ></h2>
-
-        <p
-          id="resultIntro"
-          class="result-intro"
-        ></p>
-
-      </div>
-
-
-      <div class="result-grid">
-
-        <!-- AHA -->
-
-        <article class="card result-card aha">
-
-          <h3 id="ahaTitle">
-            Your AHA
-          </h3>
-
-          <p id="ahaText"></p>
-
-        </article>
-
-
-        <!-- FOUNDATION -->
-
-        <article class="card result-card">
-
-          <h3>
-            Your Foundation
-          </h3>
-
-          <p id="foundationText"></p>
-
-        </article>
-
-
-        <!-- GAP -->
-
-        <article class="card result-card">
-
-          <h3>
-            Your Current Gap
-          </h3>
-
-          <p id="gapText"></p>
-
-        </article>
-
-
-        <!-- WHY -->
-
-        <article class="card result-card">
-
-          <h3>
-            Why This Skill
-          </h3>
-
-          <p id="whyText"></p>
-
-        </article>
-
-
-        <!-- SKILLS -->
-
-        <article class="card result-card">
-
-          <h3>
-            Skills to Build
-          </h3>
-
-          <ul
-            id="skillsList"
-            class="skill-list"
-          ></ul>
-
-        </article>
-
-
-        <!-- 30 DAY PATH -->
-
-        <article class="card result-card">
-
-          <h3>
-            Your 30-Day Path
-          </h3>
-
-          <ol
-            id="stepsList"
-            class="step-list"
-          ></ol>
-
-        </article>
-
-
-        <!-- RECOMMENDED PATH -->
-
-        <article class="card result-card full">
-
-          <h3>
-            Your Recommended Direction
-          </h3>
-
-          <p>
-            Based on your answers, your next skill direction is:
-          </p>
-
-          <div
-            id="recommendedPath"
-            class="path-box"
-          ></div>
-
-        </article>
-
-      </div>
-
-
-      <!-- =====================================================
-           ACTIONS
-           ===================================================== -->
-
-      <div class="result-actions">
-
-        <button
-          class="btn btn-soft"
-          type="button"
-          onclick="restartAssessment()"
-        >
-          ↺ Start Again
-        </button>
-
-      </div>
-
-
-      <!-- =====================================================
-           SAVE / SHARE
-           ===================================================== -->
-
-      <div class="card share-box">
-
-        <h3>
-          Keep Your AHA
-        </h3>
-
-        <p id="shareDescription">
-          Save your Skill Co-Pilot result in your browser,
-          or copy the Your Next Skill link to share the tool.
-        </p>
-
-        <div class="result-actions">
-
+        <div class="navigation">
           <button
-            class="btn btn-sage"
+            id="backButton"
+            class="btn btn-secondary"
             type="button"
-            onclick="saveMyResults()"
+            onclick="previousQuestion()"
+            disabled
           >
-            💾 Save My Results
+            ← Back
           </button>
 
           <button
+            id="nextButton"
             class="btn btn-primary"
             type="button"
-            onclick="shareToolLink()"
+            onclick="nextQuestion()"
           >
-            🔗 Save and Share
+            Continue →
           </button>
-
         </div>
-
-        <div
-          id="copyConfirmation"
-          aria-live="polite"
-        ></div>
 
       </div>
 
+      <!-- RESULTS -->
+      <div id="results" class="results hidden">
 
-      <!-- =====================================================
-           ALISON
-           ===================================================== -->
+        <div class="result-header">
+          <span class="eyebrow">🤖 Your Skill AHA</span>
 
-      <div class="card learning-box">
+          <h2 id="resultTitle">Your next level is becoming clearer.</h2>
 
-        <h3>
-          Ready to Keep Learning?
-        </h3>
+          <p id="resultIntro"></p>
+        </div>
 
-        <p>
-          If your next step is learning, explore practical
-          courses and certificates through Alison.
+        <div class="aha-box">
+          <div class="aha-label">Your AHA</div>
+
+          <h3 id="ahaTitle"></h3>
+
+          <p id="ahaText"></p>
+        </div>
+
+        <div class="result-grid">
+
+          <div class="result-card">
+            <h3>🌿 What you already bring</h3>
+            <p id="foundationText"></p>
+          </div>
+
+          <div class="result-card">
+            <h3>🧩 Where you could level up</h3>
+            <p id="gapText"></p>
+          </div>
+
+          <div class="result-card">
+            <h3>💡 Why this matters</h3>
+            <p id="whyText"></p>
+          </div>
+
+          <div class="result-card">
+            <h3>📚 Skills worth building</h3>
+            <ul id="skillsList" class="skill-list"></ul>
+          </div>
+
+        </div>
+
+        <!-- 30 DAY PATH -->
+        <div class="level-path">
+
+          <h3>Your 30-Day Level-Up Path</h3>
+
+          <div class="steps">
+
+            <div class="step">
+              <div class="step-number">1</div>
+              <strong>Identify</strong>
+              <span id="step1"></span>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <strong>Learn</strong>
+              <span id="step2"></span>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <strong>Practice</strong>
+              <span id="step3"></span>
+            </div>
+
+            <div class="step">
+              <div class="step-number">4</div>
+              <strong>Demonstrate</strong>
+              <span id="step4"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SHARE -->
+        <div class="share-box">
+
+          <h3>🔗 Save & Share My Results</h3>
+
+          <p>
+            Save your Skill Co-Pilot result in your browser,
+            or copy the Your Next Skill link to share the tool.
+          </p>
+
+          <div class="share-buttons">
+
+            <button
+              class="btn btn-sage"
+              type="button"
+              onclick="saveMyResults()"
+            >
+              💾 Save My Results
+            </button>
+
+            <button
+              class="btn btn-primary"
+              type="button"
+              onclick="shareToolLink()"
+            >
+              🔗 Save and Share
+            </button>
+
+          </div>
+
+          <div id="copyConfirmation" class="copy-confirmation"></div>
+
+        </div>
+
+        <!-- LEARNING -->
+        <section class="learning-section">
+
+          <div class="section-heading">
+            <h3>🌱 Ready to build the skill?</h3>
+
+            <p>
+              You don't need to learn everything at once.
+              Choose the learning path that matches the gap you want to work on.
+            </p>
+          </div>
+
+          <div class="learning-grid">
+
+            <a
+              class="learning-card"
+              href="https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAlison('alison_signup_click')"
+            >
+              <div class="learning-icon">🎓</div>
+              <strong>Start Learning</strong>
+              <span>
+                Explore Alison courses and begin building your next skill.
+              </span>
+            </a>
+
+            <a
+              class="learning-card"
+              href="https://alison.com/certificate-courses?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAlison('alison_certificate_click')"
+            >
+              <div class="learning-icon">📜</div>
+              <strong>Explore Certificates</strong>
+              <span>
+                Explore certificate-focused learning options.
+              </span>
+            </a>
+
+            <a
+              class="learning-card"
+              href="https://alison.com/courses/business?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAlison('alison_business_click')"
+            >
+              <div class="learning-icon">💼</div>
+              <strong>Business Courses</strong>
+              <span>
+                Build practical business knowledge for today's workplace.
+              </span>
+            </a>
+
+            <a
+              class="learning-card"
+              href="https://alison.com/courses/management?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAlison('alison_management_click')"
+            >
+              <div class="learning-icon">🧭</div>
+              <strong>Management Courses</strong>
+              <span>
+                Explore management and leadership-related learning.
+              </span>
+            </a>
+
+            <a
+              class="learning-card"
+              href="https://alison.com/courses/personal-development?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackAlison('alison_personal_development_click')"
+            >
+              <div class="learning-icon">🌱</div>
+              <strong>Personal Development</strong>
+              <span>
+                Strengthen the habits and capabilities behind your next move.
+              </span>
+            </a>
+
+          </div>
+
+        </section>
+
+        <!-- TABING GUHIT -->
+        <section class="footer-journey">
+
+          <h3>Your next step doesn't have to end here.</h3>
+
+          <p>
+            Keep exploring practical tools for work, money, growth,
+            career direction and your next chapter with Tabing Guhit.
+          </p>
+
+          <div class="social-links">
+
+            <a
+              href="https://cathiesnest.github.io/tabing-guhit-3.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackEvent('tabing_guhit_click')"
+            >
+              🌿 Tabing Guhit 3.0
+            </a>
+
+            <a
+              href="https://ph.pinterest.com/CathiesnestDigitalHub/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackEvent('pinterest_click')"
+            >
+              📌 Follow on Pinterest
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=61580857530656"
+              target="_blank"
+              rel="noopener noreferrer"
+              onclick="trackEvent('facebook_click')"
+            >
+              📘 Follow on Facebook
+            </a>
+
+          </div>
+
+        </section>
+
+        <p class="privacy-note">
+          Your Next Skill does not require an account. Your assessment answers
+          are used in your browser to create your result and shareable link.
+          We don't ask you for your name, email address, phone number or other
+          personal information to use this tool.
         </p>
 
-        <div class="learning-links">
-
-          <a
-            class="learning-link"
-            href="https://alison.com/?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="trackEvent('alison_home_click')"
+        <div class="restart">
+          <button
+            class="btn btn-secondary"
+            type="button"
+            onclick="restartAssessment()"
           >
-            Explore Alison
-          </a>
-
-          <a
-            class="learning-link"
-            href="https://alison.com/certificate-courses?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="trackEvent('alison_certificate_click')"
-          >
-            Certificates
-          </a>
-
-          <a
-            class="learning-link"
-            href="https://alison.com/courses/business?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="trackEvent('alison_business_click')"
-          >
-            Business
-          </a>
-
-          <a
-            class="learning-link"
-            href="https://alison.com/courses/management?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="trackEvent('alison_management_click')"
-          >
-            Management
-          </a>
-
-          <a
-            class="learning-link"
-            href="https://alison.com/courses/personal-development?utm_source=alison_user&utm_medium=affiliate&utm_campaign=42404117"
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick="trackEvent('alison_personal_development_click')"
-          >
-            Personal Development
-          </a>
-
+            ↻ Take the Skill Check Again
+          </button>
         </div>
 
       </div>
-
     </section>
-
-
-    <!-- =======================================================
-         FOOTER
-         ======================================================= -->
-
-    <footer>
-
-      <div class="footer-links">
-
-        <a
-          href="https://cathiesnest.github.io/tabing-guhit-3.0/"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackEvent('footer_tabing_guhit_click')"
-        >
-          Tabing Guhit
-        </a>
-
-        <a
-          href="https://ph.pinterest.com/CathiesnestDigitalHub/"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackEvent('footer_pinterest_click')"
-        >
-          Pinterest
-        </a>
-
-        <a
-          href="https://www.facebook.com/profile.php?id=61580857530656"
-          target="_blank"
-          rel="noopener noreferrer"
-          onclick="trackEvent('footer_facebook_click')"
-        >
-          Facebook
-        </a>
-
-      </div>
-
-      <div>
-        Your Next Skill · Powered by Tabing Guhit
-      </div>
-
-    </footer>
 
   </main>
 
+  <footer class="site-footer">
+    <div class="container">
+      Your Next Skill · Powered by Tabing Guhit · CathiesNest Digital
+    </div>
+  </footer>
 
-  <!-- =========================================================
-       TOAST
-       ========================================================= -->
-
-  <div
-    id="toast"
-    class="toast"
-    role="status"
-    aria-live="polite"
-  ></div>
+  <div id="toast" class="toast"></div>
 
 
   <script>
-
     /* =========================================================
-       QUESTIONS
+       YOUR NEXT SKILL
+       Personalized Skill Co-Pilot
        ========================================================= */
 
     const questions = [
-
       {
-        key: "direction",
-        label: "Question 1",
-        title: "What kind of work are you most drawn to right now?",
-        help: "Choose the direction that feels closest to where you want to grow.",
+        id: "direction",
+        title: "What kind of direction are you moving toward?",
+        help: "Choose the option that feels closest to where you want to go next.",
         options: [
           {
-            value: "admin",
-            label: "Organizing, coordinating, and keeping things moving"
+            value: "va_admin",
+            title: "Virtual assistance / administration",
+            description: "Remote admin, VA, executive support or operations."
+          },
+          {
+            value: "customer_success",
+            title: "Customer success / client support",
+            description: "Helping customers, managing relationships and solving problems."
+          },
+          {
+            value: "business",
+            title: "Business / operations",
+            description: "Processes, coordination, research, reporting or business support."
+          },
+          {
+            value: "marketing",
+            title: "Marketing / digital work",
+            description: "Content, social media, digital marketing or online business."
           },
           {
             value: "creative",
-            label: "Creating content, visuals, or ideas"
+            title: "Creative / content work",
+            description: "Design, writing, content creation or other creative services."
           },
+          {
+            value: "unsure",
+            title: "I'm still figuring it out",
+            description: "I know I want growth, but my direction isn't clear yet."
+          }
+        ]
+      },
+
+      {
+        id: "experience",
+        title: "What do you already bring to the table?",
+        help: "Think about your work, life, volunteer or practical experience.",
+        options: [
           {
             value: "customer",
-            label: "Helping customers, clients, or people solve problems"
+            title: "Customer-facing experience",
+            description: "Communication, service, problem-solving or relationship management."
           },
           {
-            value: "data",
-            label: "Working with information, research, or numbers"
-          }
-        ]
-      },
-
-      {
-        key: "strength",
-        label: "Question 2",
-        title: "What already feels natural to you?",
-        help: "Think about something people often trust you to handle.",
-        options: [
-          {
-            value: "organization",
-            label: "Organizing tasks, files, schedules, or details"
+            value: "admin",
+            title: "Administrative experience",
+            description: "Organization, documents, scheduling, coordination or records."
           },
           {
-            value: "communication",
-            label: "Explaining things and communicating clearly"
+            value: "sales",
+            title: "Sales / business experience",
+            description: "Selling, outreach, business development or client acquisition."
           },
           {
-            value: "creativity",
-            label: "Creating, designing, or finding fresh ideas"
-          },
-          {
-            value: "analysis",
-            label: "Researching, checking, comparing, or spotting patterns"
-          }
-        ]
-      },
-
-      {
-        key: "gap",
-        label: "Question 3",
-        title: "What would make you more confident at work?",
-        help: "Choose the area where you feel there is room to grow.",
-        options: [
-          {
-            value: "tools",
-            label: "Learning more digital tools and systems"
-          },
-          {
-            value: "ai",
-            label: "Learning how to use AI more effectively"
-          },
-          {
-            value: "strategy",
-            label: "Understanding how to make better decisions"
-          },
-          {
-            value: "portfolio",
-            label: "Building practical samples I can show employers or clients"
-          }
-        ]
-      },
-
-      {
-        key: "workstyle",
-        label: "Question 4",
-        title: "What kind of work rhythm fits you best?",
-        help: "Choose the environment where you think you can do your best work.",
-        options: [
-          {
-            value: "structured",
-            label: "Clear processes, routines, and organized workflows"
-          },
-          {
-            value: "flexible",
-            label: "Flexible work where I can manage my own priorities"
+            value: "technical",
+            title: "Digital / technical experience",
+            description: "Software, data, spreadsheets, systems or technology."
           },
           {
             value: "creative",
-            label: "Projects where I can experiment and create"
+            title: "Creative experience",
+            description: "Writing, design, content, social media or visual work."
           },
           {
-            value: "supportive",
-            label: "Work where I can help people and solve problems"
+            value: "starting",
+            title: "I'm building my foundation",
+            description: "I have some experience but I'm still developing my professional direction."
+          }
+        ]
+      },
+
+      {
+        id: "confidence",
+        title: "How would you describe your current skill confidence?",
+        help: "This is about how ready you feel using your skills in a real work setting.",
+        options: [
+          {
+            value: "beginner",
+            title: "I'm still learning the basics",
+            description: "I need structure and practice before I feel job-ready."
+          },
+          {
+            value: "developing",
+            title: "I can do some things, but I need more practice",
+            description: "I have a foundation but still need confidence and consistency."
+          },
+          {
+            value: "intermediate",
+            title: "I'm comfortable, but I want to level up",
+            description: "I can work independently and want stronger skills."
+          },
+          {
+            value: "experienced",
+            title: "I have experience, but my skills need updating",
+            description: "I know how to work, but the digital workplace keeps changing."
+          },
+          {
+            value: "uncertain",
+            title: "I'm not sure",
+            description: "I don't have a clear picture of where my current skills stand."
+          }
+        ]
+      },
+
+      {
+        id: "barrier",
+        title: "What is the biggest thing holding you back?",
+        help: "Choose the gap that feels most relevant right now.",
+        options: [
+          {
+            value: "skills",
+            title: "I need stronger skills",
+            description: "I know where I want to go, but I need capability to match it."
+          },
+          {
+            value: "digital",
+            title: "I need stronger digital skills",
+            description: "Tools, software, AI, spreadsheets or online workflows."
+          },
+          {
+            value: "credentials",
+            title: "I need credentials or structured learning",
+            description: "I want courses or certificates to support my development."
+          },
+          {
+            value: "confidence",
+            title: "I don't feel confident enough yet",
+            description: "I need practice and proof that I can actually do the work."
+          },
+          {
+            value: "direction",
+            title: "I don't know what to learn next",
+            description: "Too many options make it difficult to choose."
+          },
+          {
+            value: "positioning",
+            title: "I don't know how to present my experience",
+            description: "I have experience, but I'm struggling to translate it into opportunities."
           }
         ]
       }
-
     ];
-
-
-    /* =========================================================
-       STATE
-       ========================================================= */
 
     let currentQuestion = 0;
 
-    let answers = {};
+    let answers = {
+      direction: null,
+      experience: null,
+      confidence: null,
+      barrier: null
+    };
 
     let resultData = null;
 
-
     /* =========================================================
-       GA4 TRACKING
+       GA4 HELPERS
        ========================================================= */
 
-    function trackEvent(eventName, params = {}) {
-
+    function trackEvent(eventName, parameters = {}) {
       if (typeof gtag === "function") {
+        gtag("event", eventName, {
+          ...parameters,
+          tool_name: "your_next_skill"
+        });
+      }
+    }
 
-        gtag("event", eventName, params);
+    function trackAlison(eventName) {
+      trackEvent(eventName, {
+        destination: "alison",
+        direction: answers.direction || "unknown",
+        primary_gap: resultData ? resultData.primaryGap : "unknown"
+      });
+    }
+
+    /* =========================================================
+       QUESTION RENDERING
+       ========================================================= */
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+      const selectedValue = answers[question.id];
+
+      const area = document.getElementById("questionArea");
+
+      area.innerHTML = `
+        <div class="question-number">
+          Question ${currentQuestion + 1}
+        </div>
+
+        <h2 class="question-title">
+          ${question.title}
+        </h2>
+
+        <p class="question-help">
+          ${question.help}
+        </p>
+
+        <div class="options">
+          ${question.options.map(option => `
+            <button
+              type="button"
+              class="option ${selectedValue === option.value ? "selected" : ""}"
+              onclick="selectOption('${question.id}', '${option.value}')"
+            >
+              <strong>${option.title}</strong>
+              <span>${option.description}</span>
+            </button>
+          `).join("")}
+        </div>
+      `;
+
+      updateProgress();
+
+      document.getElementById("backButton").disabled =
+        currentQuestion === 0;
+
+      const nextButton = document.getElementById("nextButton");
+
+      nextButton.textContent =
+        currentQuestion === questions.length - 1
+          ? "See My Skill AHA →"
+          : "Continue →";
+    }
+
+    function selectOption(questionId, value) {
+      answers[questionId] = value;
+
+      trackEvent("question_answered", {
+        question_number: currentQuestion + 1,
+        question_id: questionId,
+        answer: value
+      });
+
+      renderQuestion();
+    }
+
+    function updateProgress() {
+      const percentage =
+        Math.round(((currentQuestion + 1) / questions.length) * 100);
+
+      document.getElementById("progressBar").style.width =
+        percentage + "%";
+
+      document.getElementById("progressText").textContent =
+        `Question ${currentQuestion + 1} of ${questions.length}`;
+
+      document.getElementById("progressPercent").textContent =
+        percentage + "%";
+    }
+
+    function nextQuestion() {
+      const question = questions[currentQuestion];
+
+      if (!answers[question.id]) {
+        showToast("Choose the answer that feels closest to you first. 🌿");
+        return;
+      }
+
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+        window.scrollTo({
+          top: document.querySelector(".main-card").offsetTop - 20,
+          behavior: "smooth"
+        });
+      } else {
+        generateResult();
+      }
+    }
+
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+      }
+    }
+
+    /* =========================================================
+       PERSONALIZED CO-PILOT ENGINE
+       ========================================================= */
+
+    function generateResult() {
+
+      trackEvent("skill_check_completed", {
+        target_direction: answers.direction,
+        experience_type: answers.experience,
+        confidence_level: answers.confidence,
+        barrier: answers.barrier
+      });
+
+      const result = buildResult();
+
+      resultData = result;
+
+      document.getElementById("assessment").classList.add("hidden");
+      document.getElementById("results").classList.remove("hidden");
+
+      document.getElementById("resultTitle").textContent =
+        result.title;
+
+      document.getElementById("resultIntro").textContent =
+        result.intro;
+
+      document.getElementById("ahaTitle").textContent =
+        result.ahaTitle;
+
+      document.getElementById("ahaText").textContent =
+        result.ahaText;
+
+      document.getElementById("foundationText").textContent =
+        result.foundation;
+
+      document.getElementById("gapText").textContent =
+        result.gap;
+
+      document.getElementById("whyText").textContent =
+        result.why;
+
+      document.getElementById("skillsList").innerHTML =
+        result.skills.map(skill => `<li>${skill}</li>`).join("");
+
+      document.getElementById("step1").textContent =
+        result.steps[0];
+
+      document.getElementById("step2").textContent =
+        result.steps[1];
+
+      document.getElementById("step3").textContent =
+        result.steps[2];
+
+      document.getElementById("step4").textContent =
+        result.steps[3];
+
+      trackEvent("copilot_result_viewed", {
+        target_direction: answers.direction,
+        primary_gap: result.primaryGap,
+        recommended_path: result.recommendedPath,
+        experience_type: answers.experience,
+        confidence_level: answers.confidence
+      });
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function buildResult() {
+
+      const direction = answers.direction;
+      const experience = answers.experience;
+      const confidence = answers.confidence;
+      const barrier = answers.barrier;
+
+      let foundation = "";
+      let gap = "";
+      let why = "";
+      let skills = [];
+      let steps = [];
+      let ahaTitle = "";
+      let ahaText = "";
+      let recommendedPath = "business";
+      let primaryGap = barrier;
+
+      /* ---------- FOUNDATION ---------- */
+
+      const foundations = {
+        customer:
+          "You already bring customer-facing experience: communication, listening, problem-solving and the ability to work with real people and real needs.",
+
+        admin:
+          "You already understand the discipline behind organized work: coordination, documentation, schedules, details and keeping tasks moving.",
+
+        sales:
+          "You already bring commercial awareness: understanding people, communicating value, following up and working toward outcomes.",
+
+        technical:
+          "You already have exposure to digital systems and tools. That gives you a useful foundation for building more specialized digital capabilities.",
+
+        creative:
+          "You already bring creative thinking and the ability to communicate ideas through content, writing, design or digital media.",
+
+        starting:
+          "You may still be building your professional foundation, but you are already doing the most important first step: identifying where you want to grow."
+      };
+
+      foundation = foundations[experience];
+
+      /* ---------- DIRECTION + GAP ---------- */
+
+      if (direction === "va_admin") {
+
+        gap =
+          "Your next layer is likely digital operations: becoming comfortable with the tools, workflows and systems that allow an assistant to do more than simply complete individual tasks.";
+
+        why =
+          "Remote administrative work increasingly rewards people who can organize information, manage workflows, work confidently with digital tools and use AI responsibly to make repetitive work more efficient.";
+
+        skills = [
+          "Digital productivity and workplace tools",
+          "Spreadsheets and organized data handling",
+          "Task and workflow management",
+          "AI-assisted administrative workflows",
+          "Professional documentation and process thinking"
+        ];
+
+        recommendedPath = "business";
+
+        ahaTitle =
+          "You may not need to start over. You may need to add a digital operations layer.";
+
+        ahaText =
+          "Your existing experience can become more valuable when it is paired with modern digital skills. The goal is not simply to become 'a VA.' It is to become someone who can help keep work, information and workflows moving.";
+
+      } else if (direction === "customer_success") {
+
+        gap =
+          "Your next layer may be the move from simply serving customers to understanding the systems, data and processes behind the customer experience.";
+
+        why =
+          "Customer-focused roles can involve more than communication. Stronger digital, analytical and process skills can help you understand customer patterns, document issues, improve workflows and contribute beyond individual interactions.";
+
+        skills = [
+          "Customer relationship management concepts",
+          "Data and spreadsheet fundamentals",
+          "Process improvement",
+          "Professional documentation",
+          "AI-assisted customer operations"
+        ];
+
+        recommendedPath = "business";
+
+        ahaTitle =
+          "Your customer experience can become an operations advantage.";
+
+        ahaText =
+          "You already understand people. The opportunity now is to strengthen the systems side of customer work so you can contribute to processes, reporting, workflows and improvement — not only conversations.";
+
+      } else if (direction === "business") {
+
+        gap =
+          "Your next level may require stronger business operations skills: organizing information, understanding processes, working with data and turning tasks into repeatable workflows.";
+
+        why =
+          "Business support roles often sit between people, information and processes. Stronger operational skills can make your existing experience easier to translate into remote and digital work.";
+
+        skills = [
+          "Business fundamentals",
+          "Process mapping and improvement",
+          "Spreadsheet and data skills",
+          "Project and task coordination",
+          "AI-assisted business workflows"
+        ];
+
+        recommendedPath = "business";
+
+        ahaTitle =
+          "The next step may be learning how the work connects — not just how to complete the task.";
+
+        ahaText =
+          "Your experience gives you context. Adding business and operations skills can help you see the bigger workflow, identify inefficiencies and contribute at a higher level.";
+
+      } else if (direction === "marketing") {
+
+        gap =
+          "Your next layer may be the combination of digital marketing fundamentals, audience understanding, content strategy and measurement.";
+
+        why =
+          "Creating content is only one part of digital marketing. Understanding audiences, campaigns, channels and results helps turn creative activity into purposeful business work.";
+
+        skills = [
+          "Digital marketing fundamentals",
+          "Content and audience strategy",
+          "Social media marketing",
+          "Basic analytics and measurement",
+          "AI-assisted content workflows"
+        ];
+
+        recommendedPath = "business";
+
+        ahaTitle =
+          "Marketing is more than posting. It's understanding why the right person takes the next step.";
+
+        ahaText =
+          "If you already enjoy communication or creative work, adding strategy, audience research and measurement can move you from simply creating content toward creating purposeful digital marketing work.";
+
+      } else if (direction === "creative") {
+
+        gap =
+          "Your next layer may be learning how to turn creativity into a repeatable professional service: understanding audiences, workflows, client needs and digital delivery.";
+
+        why =
+          "Creative ability becomes more commercially useful when you can connect it to a real audience, a clear objective, a reliable workflow and a finished deliverable.";
+
+        skills = [
+          "Digital content fundamentals",
+          "Audience and communication strategy",
+          "Creative workflow management",
+          "Client/project communication",
+          "AI-assisted creative workflows"
+        ];
+
+        recommendedPath = "personal_development";
+
+        ahaTitle =
+          "Your creativity becomes more valuable when you can connect it to a real outcome.";
+
+        ahaText =
+          "You don't necessarily need to become less creative. You may need to add structure around your creativity so clients or employers can clearly see what problem your work solves.";
+
+      } else {
+
+        gap =
+          "Your biggest opportunity may be building a clearer skill foundation before trying to choose one permanent career direction.";
+
+        why =
+          "You don't need to decide your entire future at once. Building transferable digital, business and communication skills can give you more options while you learn what kind of work fits you.";
+
+        skills = [
+          "Digital productivity",
+          "Communication and professional writing",
+          "Business fundamentals",
+          "AI literacy and responsible AI use",
+          "One practical skill connected to your interests"
+        ];
+
+        recommendedPath = "personal_development";
+
+        ahaTitle =
+          "You may not need a perfect career answer yet. You need a useful next skill.";
+
+        ahaText =
+          "Instead of trying to choose your entire career today, build one capability that opens several doors. As you learn and practice, your direction can become clearer.";
 
       }
 
+      /* ---------- BARRIER REFINEMENT ---------- */
+
+      if (barrier === "digital") {
+
+        primaryGap = "digital_skills";
+
+        gap +=
+          " Your answers also point specifically toward digital capability as an area worth strengthening.";
+
+        skills.unshift("Digital tool confidence and AI literacy");
+
+      } else if (barrier === "credentials") {
+
+        primaryGap = "credentials";
+
+        gap +=
+          " You also indicated that structured learning or credentials could help you create a clearer development path.";
+
+      } else if (barrier === "confidence") {
+
+        primaryGap = "confidence";
+
+        gap +=
+          " Confidence is best strengthened through practice and evidence, so learning should be paired with small projects rather than certificates alone.";
+
+      } else if (barrier === "direction") {
+
+        primaryGap = "direction";
+
+        gap +=
+          " Because your direction is still developing, prioritize transferable skills rather than committing to a narrow specialization too early.";
+
+      } else if (barrier === "positioning") {
+
+        primaryGap = "positioning";
+
+        gap +=
+          " You may also need to learn how to translate your existing experience into clearer role-specific evidence.";
+
+      }
+
+      /* ---------- CONFIDENCE ---------- */
+
+      if (confidence === "experienced") {
+
+        ahaText +=
+          " Because you already have experience, focus on updating and layering your skills rather than starting from zero.";
+
+      } else if (confidence === "beginner") {
+
+        ahaText +=
+          " Because you're still building your foundation, choose one skill and practice it consistently before trying to master everything.";
+
+      } else if (confidence === "intermediate") {
+
+        ahaText +=
+          " Since you already have a working foundation, this is a good point to deliberately specialize instead of collecting unrelated skills.";
+
+      }
+
+      /* ---------- 30-DAY PLAN ---------- */
+
+      steps = [
+        `Choose one ${primaryGap === "direction" ? "transferable skill area" : "skill gap"} to focus on.`,
+        `Study a structured course related to ${recommendedPath === "business" ? "business or digital work" : "your development area"}.`,
+        "Use the skill in a small real-world exercise or personal project.",
+        "Document what you built and add the evidence to your portfolio, resume or work samples."
+      ];
+
+      /* ---------- TITLE / INTRO ---------- */
+
+      let title =
+        "Your next level is becoming clearer.";
+
+      if (confidence === "experienced") {
+        title =
+          "You have a foundation. Now it's time to add the next layer.";
+      } else if (confidence === "beginner") {
+        title =
+          "You don't need to know everything. You need a place to begin.";
+      }
+
+      const intro =
+        "Your answers don't define your career. They simply highlight a practical area where learning and deliberate practice could create your next opportunity.";
+
+      return {
+        title,
+        intro,
+        ahaTitle,
+        ahaText,
+        foundation,
+        gap,
+        why,
+        skills: [...new Set(skills)].slice(0, 6),
+        steps,
+        primaryGap,
+        recommendedPath
+      };
     }
 
+    /* =========================================================
+       SAVE MY RESULTS
+       ========================================================= */
+
+    function saveMyResults() {
+
+      if (!resultData) {
+        showToast("Your Skill Co-Pilot result isn't ready yet. 🌿");
+        return;
+      }
+
+      const savedResult = {
+        savedAt: new Date().toISOString(),
+        answers: { ...answers },
+        result: {
+          title: resultData.title,
+          intro: resultData.intro,
+          ahaTitle: resultData.ahaTitle,
+          ahaText: resultData.ahaText,
+          foundation: resultData.foundation,
+          gap: resultData.gap,
+          why: resultData.why,
+          skills: [...resultData.skills],
+          steps: [...resultData.steps],
+          primaryGap: resultData.primaryGap,
+          recommendedPath: resultData.recommendedPath
+        }
+      };
+
+      try {
+
+        localStorage.setItem(
+          "your_next_skill_saved_result",
+          JSON.stringify(savedResult)
+        );
+
+        document.getElementById("copyConfirmation").textContent =
+          "Your Skill Co-Pilot result has been saved on this device! 🌱";
+
+        showToast("Your Skill Co-Pilot result has been saved! 🌱");
+
+        trackEvent("save_results_clicked", {
+          save_method: "local_storage",
+          target_direction: answers.direction,
+          primary_gap: resultData.primaryGap
+        });
+
+      } catch (error) {
+
+        document.getElementById("copyConfirmation").textContent =
+          "We couldn't save the result on this device.";
+
+        showToast("Unable to save on this device. Please try again.");
+
+        trackEvent("save_results_error", {
+          target_direction: answers.direction,
+          primary_gap: resultData.primaryGap
+        });
+      }
+    }
+
+    /* =========================================================
+       SHARE TOOL LINK
+       ========================================================= */
+
+    async function shareToolLink() {
+
+      const shareUrl =
+        "https://cathiesnest.github.io/your-next-skill/";
+
+      try {
+
+        await navigator.clipboard.writeText(shareUrl);
+
+        document.getElementById("copyConfirmation").textContent =
+          "Your Next Skill link copied successfully! 🎉";
+
+        showToast("Your Next Skill link copied successfully! 🎉");
+
+        trackEvent("your_next_skill_share_click", {
+          share_method: "copy_tool_link"
+        });
+
+      } catch (error) {
+
+        window.prompt(
+          "Copy the Your Next Skill link:",
+          shareUrl
+        );
+
+        trackEvent("your_next_skill_share_click", {
+          share_method: "manual_copy_tool_link"
+        });
+      }
+    }
+
+    /* =========================================================
+       LOAD SHARED RESULT
+       ========================================================= */
+
+    function loadSharedResult() {
+
+      const params = new URLSearchParams(window.location.search);
+
+      const encoded = params.get("result");
+
+      if (!encoded) {
+        return false;
+      }
+
+      const decoded = decodeAnswers(encoded);
+
+      if (
+        !decoded ||
+        !decoded.direction ||
+        !decoded.experience ||
+        !decoded.confidence ||
+        !decoded.barrier
+      ) {
+        return false;
+      }
+
+      answers = decoded;
+
+      generateResult();
+
+      trackEvent("shared_result_opened", {
+        target_direction: answers.direction,
+        experience_type: answers.experience,
+        confidence_level: answers.confidence,
+        barrier: answers.barrier
+      });
+
+      return true;
+    }
+
+    /* =========================================================
+       RESTART
+       ========================================================= */
+
+    function restartAssessment() {
+
+      currentQuestion = 0;
+
+      answers = {
+        direction: null,
+        experience: null,
+        confidence: null,
+        barrier: null
+      };
+
+      resultData = null;
+
+      document.getElementById("results").classList.add("hidden");
+      document.getElementById("assessment").classList.remove("hidden");
+
+      document.getElementById("copyConfirmation").textContent = "";
+
+      if (window.history.replaceState) {
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+      }
+
+      renderQuestion();
+
+      trackEvent("skill_check_restarted");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
 
     /* =========================================================
        TOAST
        ========================================================= */
 
-    let toastTimer = null;
+    let toastTimer;
 
     function showToast(message) {
 
@@ -1248,1154 +2367,9 @@
       clearTimeout(toastTimer);
 
       toastTimer = setTimeout(() => {
-
         toast.classList.remove("show");
-
-      }, 3000);
-
+      }, 3200);
     }
-
-
-    /* =========================================================
-       RENDER QUESTION
-       ========================================================= */
-
-    function renderQuestion() {
-
-      const question = questions[currentQuestion];
-
-      document.getElementById("questionNumber").textContent =
-        question.label;
-
-      document.getElementById("questionTitle").textContent =
-        question.title;
-
-      document.getElementById("questionHelp").textContent =
-        question.help;
-
-
-      const optionsContainer =
-        document.getElementById("options");
-
-      optionsContainer.innerHTML = "";
-
-
-      question.options.forEach(option => {
-
-        const button =
-          document.createElement("button");
-
-        button.type = "button";
-
-        button.className = "option";
-
-        button.textContent = option.label;
-
-        button.dataset.value = option.value;
-
-
-        if (
-          answers[question.key] === option.value
-        ) {
-
-          button.classList.add("selected");
-
-        }
-
-
-        button.addEventListener(
-          "click",
-          () => selectOption(option.value)
-        );
-
-
-        optionsContainer.appendChild(button);
-
-      });
-
-
-      updateProgress();
-
-      updateNavigation();
-
-    }
-
-
-    /* =========================================================
-       SELECT OPTION
-       ========================================================= */
-
-    function selectOption(value) {
-
-      const question = questions[currentQuestion];
-
-      answers[question.key] = value;
-
-
-      document
-        .querySelectorAll(".option")
-        .forEach(button => {
-
-          button.classList.toggle(
-            "selected",
-            button.dataset.value === value
-          );
-
-        });
-
-
-      updateNavigation();
-
-
-      trackEvent("skill_question_answered", {
-
-        question_number: currentQuestion + 1,
-
-        question_key: question.key,
-
-        answer: value
-
-      });
-
-    }
-
-
-    /* =========================================================
-       PROGRESS
-       ========================================================= */
-
-    function updateProgress() {
-
-      const percent =
-        ((currentQuestion + 1) / questions.length) * 100;
-
-
-      document.getElementById("progressLabel").textContent =
-        `Question ${currentQuestion + 1} of ${questions.length}`;
-
-
-      document.getElementById("progressPercent").textContent =
-        `${percent}%`;
-
-
-      document.getElementById("progressBar").style.width =
-        `${percent}%`;
-
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
-
-    function updateNavigation() {
-
-      const question =
-        questions[currentQuestion];
-
-
-      const hasAnswer =
-        Boolean(answers[question.key]);
-
-
-      document.getElementById("backButton").disabled =
-        currentQuestion === 0;
-
-
-      const nextButton =
-        document.getElementById("nextButton");
-
-
-      nextButton.disabled =
-        !hasAnswer;
-
-
-      nextButton.textContent =
-        currentQuestion === questions.length - 1
-          ? "See My Results →"
-          : "Next →";
-
-    }
-
-
-    function previousQuestion() {
-
-      if (currentQuestion === 0) {
-        return;
-      }
-
-
-      currentQuestion--;
-
-      renderQuestion();
-
-
-      document
-        .getElementById("assessment")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-    }
-
-
-    function nextQuestion() {
-
-      const question =
-        questions[currentQuestion];
-
-
-      if (!answers[question.key]) {
-
-        showToast(
-          "Choose an answer first. 🌿"
-        );
-
-        return;
-
-      }
-
-
-      if (
-        currentQuestion <
-        questions.length - 1
-      ) {
-
-        currentQuestion++;
-
-        renderQuestion();
-
-        return;
-
-      }
-
-
-      generateResult();
-
-    }
-
-
-    /* =========================================================
-       BUILD RESULT
-       ========================================================= */
-
-    function buildResult(answerSet) {
-
-      const direction =
-        answerSet.direction;
-
-      const strength =
-        answerSet.strength;
-
-      const gap =
-        answerSet.gap;
-
-      const workstyle =
-        answerSet.workstyle;
-
-
-      let title =
-        "Your next skill is about building leverage.";
-
-
-      let intro =
-        "You already have useful experience. The goal is not to start over, but to add one practical layer that makes what you already know more valuable.";
-
-
-      let ahaTitle =
-        "Your experience is already part of the answer.";
-
-
-      let ahaText =
-        "Your next skill does not need to replace your existing strengths. It can connect them to better tools, clearer workflows, and more flexible opportunities.";
-
-
-      let foundation =
-        "You already have a foundation in transferable skills such as communication, organization, problem-solving, and follow-through.";
-
-
-      let gapText =
-        "A focused skill gap can be turned into a practical learning plan rather than an overwhelming list of things to learn.";
-
-
-      let why =
-        "The right next skill should strengthen something you already do well while opening a new path for growth.";
-
-
-      let skills = [
-
-        "Digital workflow organization",
-
-        "AI-assisted productivity",
-
-        "Clear documentation",
-
-        "Practical problem-solving"
-
-      ];
-
-
-      let steps = [
-
-        "Choose one focused skill to practice.",
-
-        "Create one small practical sample.",
-
-        "Use the skill in a real or simulated workflow.",
-
-        "Add the result to your portfolio and continue building."
-
-      ];
-
-
-      let primaryGap =
-        gap;
-
-
-      let recommendedPath =
-        "AI-assisted digital operations";
-
-
-      /* =====================================================
-         DIRECTION
-         ===================================================== */
-
-      if (direction === "admin") {
-
-        title =
-          "Your next skill: AI-assisted administration.";
-
-        intro =
-          "Your answers point toward organized, practical work where systems, tools, and human judgment work together.";
-
-        foundation =
-          "Your natural direction is organization and coordination — a strong foundation for virtual assistance, operations, project support, and executive support.";
-
-        why =
-          "AI-assisted administration can help you work faster while keeping the human judgment, communication, and accountability that good operations require.";
-
-        skills = [
-
-          "AI-assisted task and workflow management",
-
-          "Google Workspace and digital organization",
-
-          "SOP and process documentation",
-
-          "Calendar, inbox, and information management"
-
-        ];
-
-        recommendedPath =
-          "AI-assisted Virtual Assistance / Operations";
-
-      }
-
-
-      if (direction === "creative") {
-
-        title =
-          "Your next skill: AI-assisted content and creative operations.";
-
-        intro =
-          "Your answers point toward a creative direction where ideas become useful, organized, repeatable outputs.";
-
-        foundation =
-          "Your creative instinct can become a professional advantage when paired with structure, audience awareness, and digital tools.";
-
-        why =
-          "AI can help with research, ideation, drafting, repurposing, and organization while you remain responsible for taste, judgment, and final quality.";
-
-        skills = [
-
-          "AI-assisted content ideation",
-
-          "Canva and visual content workflows",
-
-          "Content planning and organization",
-
-          "Basic audience and performance research"
-
-        ];
-
-        recommendedPath =
-          "AI-assisted Content / Creative Operations";
-
-      }
-
-
-      if (direction === "customer") {
-
-        title =
-          "Your next skill: Customer success and support operations.";
-
-        intro =
-          "Your answers point toward people-centered work where communication, problem-solving, and organized follow-through matter.";
-
-        foundation =
-          "Your ability to communicate and understand people's needs is a strong foundation for customer success, client support, and service operations.";
-
-        why =
-          "Adding systems and AI-assisted workflows can help you turn strong customer instincts into repeatable, measurable processes.";
-
-        skills = [
-
-          "Customer support workflow design",
-
-          "Knowledge base and documentation",
-
-          "AI-assisted customer research",
-
-          "Customer success tracking"
-
-        ];
-
-        recommendedPath =
-          "AI-assisted Customer Success / Support Operations";
-
-      }
-
-
-      if (direction === "data") {
-
-        title =
-          "Your next skill: Research and data-assisted operations.";
-
-        intro =
-          "Your answers point toward work where careful research, information handling, and practical analysis create value.";
-
-        foundation =
-          "Your analytical mindset can support research, quality assurance, operations, reporting, and data-focused administrative work.";
-
-        why =
-          "Combining research skills with AI and spreadsheet workflows can help you turn information into clearer decisions and useful outputs.";
-
-        skills = [
-
-          "Spreadsheet organization and analysis",
-
-          "Research and information validation",
-
-          "AI-assisted research workflows",
-
-          "Quality checking and reporting"
-
-        ];
-
-        recommendedPath =
-          "AI-assisted Research / Operations";
-
-      }
-
-
-      /* =====================================================
-         STRENGTH
-         ===================================================== */
-
-      if (strength === "organization") {
-
-        foundation +=
-          " Organization is especially valuable because it can be applied across administrative, operations, customer success, and project-based roles.";
-
-      }
-
-
-      if (strength === "communication") {
-
-        foundation +=
-          " Clear communication gives you an advantage when coordinating people, explaining processes, documenting work, and supporting customers.";
-
-      }
-
-
-      if (strength === "creativity") {
-
-        foundation +=
-          " Creativity becomes especially powerful when paired with repeatable systems and practical digital tools.";
-
-      }
-
-
-      if (strength === "analysis") {
-
-        foundation +=
-          " Analytical thinking is useful anywhere information needs to be checked, organized, compared, or turned into an actionable conclusion.";
-
-      }
-
-
-      /* =====================================================
-         GAP
-         ===================================================== */
-
-      if (gap === "tools") {
-
-        gapText =
-          "Your next opportunity may come from becoming more comfortable with the digital tools that modern remote teams use every day.";
-
-        primaryGap =
-          "digital tools";
-
-      }
-
-
-      if (gap === "ai") {
-
-        gapText =
-          "The opportunity is not simply learning AI. It is learning how to use AI responsibly inside real workflows while keeping human review and judgment.";
-
-        primaryGap =
-          "AI-assisted workflows";
-
-      }
-
-
-      if (gap === "strategy") {
-
-        gapText =
-          "Strengthening your ability to connect tasks to goals can help you move from simply completing work to understanding why the work matters.";
-
-        primaryGap =
-          "strategic thinking";
-
-      }
-
-
-      if (gap === "portfolio") {
-
-        gapText =
-          "A practical sample can often communicate your ability more clearly than a list of course certificates. Build something small, useful, and easy to explain.";
-
-        primaryGap =
-          "portfolio building";
-
-      }
-
-
-      /* =====================================================
-         WORKSTYLE
-         ===================================================== */
-
-      if (workstyle === "structured") {
-
-        why +=
-          " Your preference for structure also makes workflow design, documentation, and process improvement especially relevant.";
-
-      }
-
-
-      if (workstyle === "flexible") {
-
-        why +=
-          " Your preference for flexibility makes remote-friendly digital workflows and asynchronous work worth exploring.";
-
-      }
-
-
-      if (workstyle === "creative") {
-
-        why +=
-          " Your preference for creative work makes flexible, project-based digital roles worth exploring.";
-
-      }
-
-
-      if (workstyle === "supportive") {
-
-        why +=
-          " Your preference for supportive work makes customer success, coordination, and service operations natural areas to explore.";
-
-      }
-
-
-      return {
-
-        title,
-
-        intro,
-
-        ahaTitle,
-
-        ahaText,
-
-        foundation,
-
-        gap: gapText,
-
-        why,
-
-        skills,
-
-        steps,
-
-        primaryGap,
-
-        recommendedPath
-
-      };
-
-    }
-
-
-    /* =========================================================
-       GENERATE RESULT
-       ========================================================= */
-
-    function generateResult() {
-
-      resultData =
-        buildResult(answers);
-
-
-      document.getElementById("resultTitle").textContent =
-        resultData.title;
-
-
-      document.getElementById("resultIntro").textContent =
-        resultData.intro;
-
-
-      document.getElementById("ahaTitle").textContent =
-        resultData.ahaTitle;
-
-
-      document.getElementById("ahaText").textContent =
-        resultData.ahaText;
-
-
-      document.getElementById("foundationText").textContent =
-        resultData.foundation;
-
-
-      document.getElementById("gapText").textContent =
-        resultData.gap;
-
-
-      document.getElementById("whyText").textContent =
-        resultData.why;
-
-
-      const skillsList =
-        document.getElementById("skillsList");
-
-      skillsList.innerHTML = "";
-
-      resultData.skills.forEach(skill => {
-
-        const li =
-          document.createElement("li");
-
-        li.textContent = skill;
-
-        skillsList.appendChild(li);
-
-      });
-
-
-      const stepsList =
-        document.getElementById("stepsList");
-
-      stepsList.innerHTML = "";
-
-      resultData.steps.forEach(step => {
-
-        const li =
-          document.createElement("li");
-
-        li.textContent = step;
-
-        stepsList.appendChild(li);
-
-      });
-
-
-      document.getElementById("recommendedPath").textContent =
-        resultData.recommendedPath;
-
-
-      document.getElementById("results").style.display =
-        "block";
-
-
-      document.getElementById("results").scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "start"
-
-      });
-
-
-      trackEvent("skill_result_generated", {
-
-        target_direction: answers.direction,
-
-        primary_gap: resultData.primaryGap,
-
-        recommended_path: resultData.recommendedPath
-
-      });
-
-    }
-
-
-    /* =========================================================
-       SAVE MY RESULTS
-       ========================================================= */
-
-    function encodeAnswers(data) {
-
-      const json =
-        JSON.stringify(data);
-
-
-      const bytes =
-        new TextEncoder().encode(json);
-
-
-      let binary = "";
-
-
-      bytes.forEach(byte => {
-
-        binary += String.fromCharCode(byte);
-
-      });
-
-
-      return btoa(binary)
-
-        .replace(/\+/g, "-")
-
-        .replace(/\//g, "_")
-
-        .replace(/=+$/, "");
-
-    }
-
-
-    function decodeAnswers(encoded) {
-
-      try {
-
-        let base64 =
-          encoded
-            .replace(/-/g, "+")
-            .replace(/_/g, "/");
-
-
-        while (base64.length % 4) {
-
-          base64 += "=";
-
-        }
-
-
-        const binary =
-          atob(base64);
-
-
-        const bytes =
-          Uint8Array.from(
-
-            binary,
-
-            character =>
-              character.charCodeAt(0)
-
-          );
-
-
-        return JSON.parse(
-
-          new TextDecoder().decode(bytes)
-
-        );
-
-      } catch (error) {
-
-        return null;
-
-      }
-
-    }
-
-
-    function saveMyResults() {
-
-      if (!resultData) {
-
-        showToast(
-          "Your Skill Co-Pilot result isn't ready yet. 🌿"
-        );
-
-        return;
-
-      }
-
-
-      const encoded =
-        encodeAnswers(answers);
-
-
-      const savedResultUrl =
-        window.location.origin +
-        window.location.pathname +
-        "?result=" +
-        encodeURIComponent(encoded);
-
-
-      const savedResult = {
-
-        savedAt:
-          new Date().toISOString(),
-
-        resultUrl:
-          savedResultUrl,
-
-        answers:
-          { ...answers },
-
-        result: {
-
-          title:
-            resultData.title,
-
-          intro:
-            resultData.intro,
-
-          ahaTitle:
-            resultData.ahaTitle,
-
-          ahaText:
-            resultData.ahaText,
-
-          foundation:
-            resultData.foundation,
-
-          gap:
-            resultData.gap,
-
-          why:
-            resultData.why,
-
-          skills:
-            [...resultData.skills],
-
-          steps:
-            [...resultData.steps],
-
-          primaryGap:
-            resultData.primaryGap,
-
-          recommendedPath:
-            resultData.recommendedPath
-
-        }
-
-      };
-
-
-      try {
-
-        localStorage.setItem(
-
-          "your_next_skill_saved_result",
-
-          JSON.stringify(savedResult)
-
-        );
-
-
-        document.getElementById(
-          "copyConfirmation"
-        ).innerHTML = `
-
-          <div style="margin-bottom: 8px;">
-            Your Skill Co-Pilot result has been saved! 🌱
-          </div>
-
-          <div style="margin-bottom: 8px;">
-
-            <a
-              href="${savedResultUrl}"
-              target="_blank"
-              rel="noopener noreferrer"
-              style="
-                color: var(--sage-dark);
-                font-weight: 700;
-                text-decoration: underline;
-                word-break: break-all;
-              "
-            >
-              🔗 Open My Saved Results
-            </a>
-
-          </div>
-
-          <div
-            style="
-              font-size: 12px;
-              color: var(--muted);
-              font-weight: 500;
-              word-break: break-all;
-            "
-          >
-            ${savedResultUrl}
-          </div>
-
-        `;
-
-
-        showToast(
-          "Your Skill Co-Pilot result has been saved! 🌱"
-        );
-
-
-        trackEvent(
-          "save_results_clicked",
-          {
-            save_method:
-              "local_storage_and_result_link",
-
-            target_direction:
-              answers.direction,
-
-            primary_gap:
-              resultData.primaryGap
-
-          }
-        );
-
-
-      } catch (error) {
-
-        document.getElementById(
-          "copyConfirmation"
-        ).textContent =
-          "We couldn't save the result on this device.";
-
-
-        showToast(
-          "Unable to save on this device. Please try again."
-        );
-
-
-        trackEvent(
-          "save_results_error",
-          {
-
-            target_direction:
-              answers.direction,
-
-            primary_gap:
-              resultData.primaryGap
-
-          }
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
-       SHARE TOOL LINK
-       ========================================================= */
-
-    async function shareToolLink() {
-
-      const shareUrl =
-        "https://cathiesnest.github.io/your-next-skill/";
-
-
-      try {
-
-        await navigator.clipboard.writeText(
-          shareUrl
-        );
-
-
-        document.getElementById(
-          "copyConfirmation"
-        ).textContent =
-          "Your Next Skill link copied successfully! 🎉";
-
-
-        showToast(
-          "Your Next Skill link copied successfully! 🎉"
-        );
-
-
-        trackEvent(
-          "your_next_skill_share_click",
-          {
-
-            share_method:
-              "copy_tool_link"
-
-          }
-        );
-
-
-      } catch (error) {
-
-        window.prompt(
-
-          "Copy the Your Next Skill link:",
-
-          shareUrl
-
-        );
-
-
-        trackEvent(
-          "your_next_skill_share_click",
-          {
-
-            share_method:
-              "manual_copy_tool_link"
-
-          }
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
-       LOAD SHARED RESULT
-       ========================================================= */
-
-    function loadSharedResult() {
-
-      const params =
-        new URLSearchParams(
-          window.location.search
-        );
-
-
-      const encoded =
-        params.get("result");
-
-
-      if (!encoded) {
-
-        return;
-
-      }
-
-
-      const decoded =
-        decodeAnswers(encoded);
-
-
-      if (
-        !decoded ||
-        !decoded.direction ||
-        !decoded.strength ||
-        !decoded.gap ||
-        !decoded.workstyle
-      ) {
-
-        showToast(
-          "We couldn't open that saved result."
-        );
-
-        return;
-
-      }
-
-
-      answers = decoded;
-
-
-      currentQuestion =
-        questions.length - 1;
-
-
-      renderQuestion();
-
-
-      generateResult();
-
-
-      document.getElementById(
-        "copyConfirmation"
-      ).innerHTML = `
-
-        <div>
-          Your saved Skill Co-Pilot result has been restored. 🌱
-        </div>
-
-      `;
-
-
-      trackEvent(
-        "saved_result_loaded"
-      );
-
-    }
-
-
-    /* =========================================================
-       RESTART
-       ========================================================= */
-
-    function restartAssessment() {
-
-      currentQuestion = 0;
-
-      answers = {};
-
-      resultData = null;
-
-
-      document.getElementById(
-        "results"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "copyConfirmation"
-      ).textContent = "";
-
-
-      if (window.history.replaceState) {
-
-        window.history.replaceState(
-
-          {},
-
-          document.title,
-
-          window.location.pathname
-
-        );
-
-      }
-
-
-      renderQuestion();
-
-
-      window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-      });
-
-
-      trackEvent(
-        "skill_assessment_restarted"
-      );
-
-    }
-
 
     /* =========================================================
        START
@@ -2403,11 +2377,7 @@
 
     renderQuestion();
 
-
-    trackEvent(
-      "skill_check_started"
-    );
-
+    trackEvent("skill_check_started");
 
     loadSharedResult();
 
