@@ -1351,15 +1351,13 @@
               💾 Save My Results
             </button>
 
-            <a
+            <button
               class="btn btn-primary"
-              href="https://cathiesnest.github.io/your-next-skill/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onclick="trackEvent('your_next_skill_share_click')"
+              type="button"
+              onclick="saveAndShare(); trackEvent('your_next_skill_share_click')"
             >
               🔗 Save and Share
-            </a>
+            </button>
 
           </div>
 
@@ -2240,9 +2238,9 @@
         await navigator.clipboard.writeText(shareUrl);
 
         document.getElementById("copyConfirmation").textContent =
-          "✓ Copied! Paste this link anywhere to save or share your results.";
+          "Link copied successfully! 🎉";
 
-        showToast("Your results link was copied! 🔗");
+        showToast("Link copied successfully! 🎉");
 
         trackEvent("share_results_clicked", {
           share_method: "copy_link",
